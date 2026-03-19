@@ -1,0 +1,116 @@
+[
+  {
+    "id": "PET01",
+    "description": "Kiểm tra với ID hợp lệ và tồn tại",
+    "input": 10,
+    "expected": 200
+  },
+  {
+    "id": "PET02",
+    "description": "Kiểm tra với ID hợp lệ khác",
+    "input": 25,
+    "expected": 200
+  },
+  {
+    "id": "PET03",
+    "description": "Kiểm tra ID hợp lệ nhưng không tồn tại",
+    "input": 999999,
+    "expected": 404
+  },
+  {
+    "id": "PET04",
+    "description": "Kiểm tra ID nhỏ nhất hợp lệ",
+    "input": 1,
+    "expected": [200, 404]
+  },
+  {
+    "id": "PET05",
+    "description": "Kiểm tra ID = 0 (boundary dưới)",
+    "input": 0,
+    "expected": [400, 404]
+  },
+  {
+    "id": "PET06",
+    "description": "Kiểm tra ID âm",
+    "input": -1,
+    "expected": 400
+  },
+  {
+    "id": "PET07",
+    "description": "Kiểm tra ID rất lớn",
+    "input": 999999999,
+    "expected": 404
+  },
+  {
+    "id": "PET08",
+    "description": "Kiểm tra ID = Long max",
+    "input": 9223372036854775807,
+    "expected": [200, 404]
+  },
+  {
+    "id": "PET09",
+    "description": "Kiểm tra ID vượt quá Long max",
+    "input": 9223372036854775808,
+    "expected": 400
+  },
+  {
+    "id": "PET10",
+    "description": "Kiểm tra ID dạng số nhưng truyền dạng string",
+    "input": "15",
+    "expected": [200, 404]
+  },
+  {
+    "id": "PET11",
+    "description": "Kiểm tra ID là chữ",
+    "input": "abc",
+    "expected": 400
+  },
+  {
+    "id": "PET12",
+    "description": "Kiểm tra ID chứa chữ và số",
+    "input": "123abc",
+    "expected": 400
+  },
+  {
+    "id": "PET13",
+    "description": "Kiểm tra ID chứa ký tự đặc biệt",
+    "input": "@#$",
+    "expected": 400
+  },
+  {
+    "id": "PET14",
+    "description": "Kiểm tra ID là số thực",
+    "input": 1.5,
+    "expected": 400
+  },
+  {
+    "id": "PET15",
+    "description": "Kiểm tra ID là boolean",
+    "input": true,
+    "expected": 400
+  },
+  {
+    "id": "PET16",
+    "description": "Không truyền petId",
+    "input": "",
+    "expected": [400, 404]
+  },
+  {
+    "id": "PET17",
+    "description": "petId rỗng",
+    "input": "",
+    "expected": 400
+  },
+  {
+    "id": "PET18",
+    "description": "petId chứa khoảng trắng",
+    "input": " ",
+    "expected": 400
+  },
+  {
+    "id": "PET19",
+    "description": "petId không tồn tại (random)",
+    "input": 123456789,
+    "expected": 404
+  }
+]
