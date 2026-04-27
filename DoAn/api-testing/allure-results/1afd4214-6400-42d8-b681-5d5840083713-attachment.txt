@@ -1,0 +1,18 @@
+===== ASSERTION =====
+PET11 | Expected: 400 | Actual: 200
+PET12 | Expected: 400 | Actual: 500
+
+===== INVALID DATA =====
+PET01 | Missing/invalid body
+PET03 | Missing/invalid body
+PET04 | Missing/invalid body
+PET05 | Missing/invalid body
+
+===== RUNTIME =====
+PET07 | No response / Exception
+PET08 | No response / Exception
+PET09 | No response / Exception
+PET14 | No response / Exception
+PET15 | No response / Exception
+
+===== ENDPOINT =====

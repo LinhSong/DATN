@@ -9,7 +9,7 @@ public class TestCase {
     public String endpoint;
     public Map<String, Object> pathParams;
     public Map<String, String> headers;
-    public Map<String, Object> body;
+    public Object body;
 
     @JsonProperty("expected_status")
     public int expectedStatus;

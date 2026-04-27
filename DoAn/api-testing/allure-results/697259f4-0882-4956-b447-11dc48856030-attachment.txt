@@ -1,0 +1,17 @@
+===== ASSERTION =====
+TC02 | Expected: 200 | Actual: 404
+TC03 | Expected: 200 | Actual: 404
+TC05 | Expected: 200 | Actual: 404
+TC09 | Expected: 200 | Actual: 404
+TC14 | Expected: 404 | Actual: 200
+
+===== INVALID DATA =====
+TC13 | Expected: 400 | Actual: 404
+TC15 | Expected: 400 | Actual: 404
+TC16 | Expected: 400 | Actual: 415
+TC18 | Expected: 400 | Actual: 404
+
+===== RUNTIME =====
+
+
+===== ENDPOINT =====

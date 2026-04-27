@@ -1,0 +1,272 @@
+[
+{
+"id": "STORE01",
+"method": "GET",
+"endpoint": "/store/inventory",
+"pathParams": {},
+"headers": {},
+"body": {},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Get inventory successfully"
+},
+{
+"id": "STORE02",
+"method": "GET",
+"endpoint": "/store/order/1",
+"pathParams": { "orderId": 1 },
+"headers": {},
+"body": {},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Get order with valid ID within range"
+},
+{
+"id": "STORE03",
+"method": "GET",
+"endpoint": "/store/order/10",
+"pathParams": { "orderId": 10 },
+"headers": {},
+"body": {},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Get order with upper boundary ID"
+},
+{
+"id": "STORE04",
+"method": "POST",
+"endpoint": "/store/order",
+"pathParams": {},
+"headers": { "Content-Type": "application/json" },
+"body": {
+"id": 101,
+"petId": 1,
+"quantity": 1,
+"shipDate": "2026-04-21T10:00:00.000Z",
+"status": "placed",
+"complete": true
+},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Create order with valid data"
+},
+{
+"id": "STORE05",
+"method": "DELETE",
+"endpoint": "/store/order/1",
+"pathParams": { "orderId": 1 },
+"headers": {},
+"body": {},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Delete order with valid ID"
+},
+{
+"id": "STORE06",
+"method": "POST",
+"endpoint": "/store/order",
+"pathParams": {},
+"headers": { "Content-Type": "application/json" },
+"body": {
+"id": 102,
+"petId": 2,
+"quantity": 5,
+"shipDate": "2026-04-21T10:00:00.000Z",
+"status": "approved",
+"complete": false
+},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Create order with different valid status"
+},
+{
+"id": "STORE07",
+"method": "GET",
+"endpoint": "/store/inventory",
+"pathParams": {},
+"headers": { "Accept": "application/json" },
+"body": {},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Get inventory with Accept header"
+},
+{
+"id": "STORE08",
+"method": "POST",
+"endpoint": "/store/order",
+"pathParams": {},
+"headers": { "Content-Type": "application/json" },
+"body": {
+"id": 103,
+"petId": 3,
+"quantity": 0,
+"shipDate": "2026-04-21T10:00:00.000Z",
+"status": "placed",
+"complete": true
+},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Create order with zero quantity (edge case)"
+},
+{
+"id": "STORE09",
+"method": "DELETE",
+"endpoint": "/store/order/10",
+"pathParams": { "orderId": 10 },
+"headers": {},
+"body": {},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Delete order at boundary ID"
+},
+{
+"id": "STORE10",
+"method": "GET",
+"endpoint": "/store/order/5",
+"pathParams": { "orderId": 5 },
+"headers": {},
+"body": {},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Get order with mid-range ID"
+},
+{
+"id": "STORE11",
+"method": "POST",
+"endpoint": "/store/order",
+"pathParams": {},
+"headers": { "Content-Type": "application/json" },
+"body": {
+"id": 104,
+"petId": 4,
+"quantity": 2,
+"shipDate": "2026-04-21T10:00:00.000Z",
+"status": "delivered",
+"complete": true
+},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Create order with delivered status"
+},
+{
+"id": "STORE12",
+"method": "GET",
+"endpoint": "/store/order/2",
+"pathParams": { "orderId": 2 },
+"headers": {},
+"body": {},
+"expected_status": 200,
+"is_valid_testcase": true,
+"error_type": null,
+"description": "Get another valid order"
+},
+{
+"id": "STORE13",
+"method": "GET",
+"endpoint": "/store/order/0",
+"pathParams": { "orderId": 0 },
+"headers": {},
+"body": {},
+"expected_status": 400,
+"is_valid_testcase": false,
+"error_type": "Invalid ID range",
+"description": "Order ID below valid range"
+},
+{
+"id": "STORE14",
+"method": "GET",
+"endpoint": "/store/order/11",
+"pathParams": { "orderId": 11 },
+"headers": {},
+"body": {},
+"expected_status": 404,
+"is_valid_testcase": false,
+"error_type": "Not Found",
+"description": "Order ID above valid range"
+},
+{
+"id": "STORE15",
+"method": "GET",
+"endpoint": "/store/order/abc",
+"pathParams": { "orderId": "abc" },
+"headers": {},
+"body": {},
+"expected_status": 400,
+"is_valid_testcase": false,
+"error_type": "Invalid data type",
+"description": "Non-integer order ID"
+},
+{
+"id": "STORE16",
+"method": "POST",
+"endpoint": "/store/order",
+"pathParams": {},
+"headers": {},
+"body": {
+"id": 105
+},
+"expected_status": 400,
+"is_valid_testcase": false,
+"error_type": "Missing required fields",
+"description": "Create order with incomplete body"
+},
+{
+"id": "STORE17",
+"method": "POST",
+"endpoint": "/store/order",
+"pathParams": {},
+"headers": { "Content-Type": "text/plain" },
+"body": "invalid",
+"expected_status": 415,
+"is_valid_testcase": false,
+"error_type": "Unsupported Media Type",
+"description": "Wrong content type"
+},
+{
+"id": "STORE18",
+"method": "DELETE",
+"endpoint": "/store/order/-1",
+"pathParams": { "orderId": -1 },
+"headers": {},
+"body": {},
+"expected_status": 400,
+"is_valid_testcase": false,
+"error_type": "Invalid ID",
+"description": "Negative order ID"
+},
+{
+"id": "STORE19",
+"method": "DELETE",
+"endpoint": "/store/order/9999",
+"pathParams": { "orderId": 9999 },
+"headers": {},
+"body": {},
+"expected_status": 404,
+"is_valid_testcase": false,
+"error_type": "Not Found",
+"description": "Delete non-existing order"
+},
+{
+"id": "STORE20",
+"method": "GET",
+"endpoint": "/store/unknown",
+"pathParams": {},
+"headers": {},
+"body": {},
+"expected_status": 404,
+"is_valid_testcase": false,
+"error_type": "Invalid endpoint",
+"description": "Call non-existing endpoint"
+}
+]

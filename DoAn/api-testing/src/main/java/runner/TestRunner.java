@@ -1,64 +1,54 @@
 package runner;
 
 import executor.ApiExecutor;
+import io.qameta.allure.Allure;
+import io.qameta.allure.model.TestResult;
 import model.TestCase;
-import model.TestResult;
 import utils.JsonReader;
-import utils.ResultWriter;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class TestRunner {
 
     public static void main(String[] args) {
 
-        // 1. validate input
-        if (args.length == 0) {
-            System.out.println("❌ Please provide test case file path");
-            System.out.println("Example: testcases/pet.json");
-            return;
-        }
+        String file = args[0];
 
-        String filePath = args[0];
+        String testUUID = UUID.randomUUID().toString();
+
+        Allure.getLifecycle().scheduleTestCase(
+                new TestResult().setUuid(testUUID).setName("API Test Suite"));
+
+        Allure.getLifecycle().startTestCase(testUUID);
 
         try {
-            // 2. load testcases
-            List<TestCase> testCases = JsonReader.readTestCases(filePath);
+            List<TestCase> testCases = JsonReader.readTestCases(file);
 
-            List<TestResult> results = new ArrayList<>();
+            int passed = 0;
 
-            int pass = 0;
-
-            // 3. execute
             for (TestCase tc : testCases) {
 
-                TestResult result = ApiExecutor.execute(tc);
-                results.add(result);
+                model.TestResult result = ApiExecutor.execute(tc);
 
-                System.out.println(
-                        tc.id +
+                System.out.println(tc.id +
                         " | Expected: " + result.expectedStatus +
                         " | Actual: " + result.actualStatus +
-                        " | Passed: " + result.passed
-                );
+                        " | Passed: " + result.passed);
 
-                if (result.passed) pass++;
+                if (result.passed) passed++;
             }
 
-            // 4. summary
             System.out.println("\n===== SUMMARY =====");
             System.out.println("Total: " + testCases.size());
-            System.out.println("Passed: " + pass);
-            System.out.println("Failed: " + (testCases.size() - pass));
-            System.out.println("Success Rate: " + (pass * 100.0 / testCases.size()) + "%");
-
-            // 5. export result
-            ResultWriter.write(results, "results/output.json");
+            System.out.println("Passed: " + passed);
+            System.out.println("Failed: " + (testCases.size() - passed));
 
         } catch (Exception e) {
-            System.out.println("❌ Error running framework");
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
+
+        Allure.getLifecycle().stopTestCase(testUUID);
+        Allure.getLifecycle().writeTestCase(testUUID);
     }
 }

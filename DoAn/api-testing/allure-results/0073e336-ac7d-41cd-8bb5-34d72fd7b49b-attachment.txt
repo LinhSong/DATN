@@ -1,0 +1,6 @@
+{
+    "sold": 35,
+    "string": 17,
+    "pending": 5,
+    "available": 940
+}
