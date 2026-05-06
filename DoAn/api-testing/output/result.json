@@ -1,0 +1,161 @@
+[ {
+  "id" : "USER01",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{id=1, username=user1, firstName=John, lastName=Doe, email=john@example.com, password=123456, phone=1234567890, userStatus=1}",
+  "responseBody" : "{\"code\":200,\"type\":\"unknown\",\"message\":\"1\"}",
+  "errorType" : null
+}, {
+  "id" : "USER02",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{}",
+  "responseBody" : "{\"id\":1,\"username\":\"user1\",\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john@example.com\",\"password\":\"123456\",\"phone\":\"1234567890\",\"userStatus\":1}",
+  "errorType" : null
+}, {
+  "id" : "USER03",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{id=1, username=user1, firstName=Updated, lastName=User, email=updated@example.com, password=123456, phone=9999999999, userStatus=1}",
+  "responseBody" : "{\"code\":200,\"type\":\"unknown\",\"message\":\"1\"}",
+  "errorType" : null
+}, {
+  "id" : "USER04",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{}",
+  "responseBody" : "{\"code\":200,\"type\":\"unknown\",\"message\":\"user1\"}",
+  "errorType" : null
+}, {
+  "id" : "USER05",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{id=2, username=edge_user, firstName=, lastName=, email=edge@example.com, password=123, phone=, userStatus=0}",
+  "responseBody" : "{\"code\":200,\"type\":\"unknown\",\"message\":\"2\"}",
+  "errorType" : null
+}, {
+  "id" : "USER06",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{}",
+  "responseBody" : "{\"id\":2,\"username\":\"edge_user\",\"firstName\":\"\",\"lastName\":\"\",\"email\":\"edge@example.com\",\"password\":\"123\",\"phone\":\"\",\"userStatus\":0}",
+  "errorType" : null
+}, {
+  "id" : "USER07",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{id=2, username=edge_user, firstName=A, lastName=B, email=a@b.com, password=pass, phone=111, userStatus=1}",
+  "responseBody" : "{\"code\":200,\"type\":\"unknown\",\"message\":\"2\"}",
+  "errorType" : null
+}, {
+  "id" : "USER08",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{id=3, username=long_username_1234567890, firstName=Test, lastName=User, email=long@example.com, password=password, phone=123456789012345, userStatus=1}",
+  "responseBody" : "{\"code\":200,\"type\":\"unknown\",\"message\":\"3\"}",
+  "errorType" : null
+}, {
+  "id" : "USER09",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{}",
+  "responseBody" : "{\"id\":3,\"username\":\"long_username_1234567890\",\"firstName\":\"Test\",\"lastName\":\"User\",\"email\":\"long@example.com\",\"password\":\"password\",\"phone\":\"123456789012345\",\"userStatus\":1}",
+  "errorType" : null
+}, {
+  "id" : "USER10",
+  "expectedStatus" : 200,
+  "actualStatus" : 200,
+  "passed" : true,
+  "requestBody" : "{}",
+  "responseBody" : "{\"code\":200,\"type\":\"unknown\",\"message\":\"edge_user\"}",
+  "errorType" : null
+}, {
+  "id" : "USER11",
+  "expectedStatus" : 404,
+  "actualStatus" : 404,
+  "passed" : true,
+  "requestBody" : "{}",
+  "responseBody" : "{\"code\":1,\"type\":\"error\",\"message\":\"User not found\"}",
+  "errorType" : null
+}, {
+  "id" : "USER12",
+  "expectedStatus" : 404,
+  "actualStatus" : 404,
+  "passed" : true,
+  "requestBody" : "{}",
+  "responseBody" : "",
+  "errorType" : null
+}, {
+  "id" : "USER13",
+  "expectedStatus" : 404,
+  "actualStatus" : 405,
+  "passed" : false,
+  "requestBody" : "{}",
+  "responseBody" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><apiResponse><type>unknown</type></apiResponse>",
+  "errorType" : "invalid_test_data"
+}, {
+  "id" : "USER14",
+  "expectedStatus" : 415,
+  "actualStatus" : 415,
+  "passed" : true,
+  "requestBody" : "{id=4, username=no_header_user}",
+  "responseBody" : "{\"code\":415,\"type\":\"unknown\",\"message\":\"com.sun.jersey.api.MessageException: A message body reader for Java class io.swagger.sample.model.User, and Java type class io.swagger.sample.model.User, and MIME media type text/plain; charset=ISO-8859-1 was not found.\\nThe registered message body readers compatible with the MIME media type are:\\n*/* ->\\n  com.sun.jersey.core.impl.provider.entity.FormProvider\\n  com.sun.jersey.core.impl.provider.entity.StringProvider\\n  com.sun.jersey.core.impl.provider.entity.ByteArrayProvider\\n  com.sun.jersey.core.impl.provider.entity.FileProvider\\n  com.sun.jersey.core.impl.provider.entity.InputStreamProvider\\n  com.sun.jersey.core.impl.provider.entity.DataSourceProvider\\n  com.sun.jersey.core.impl.provider.entity.XMLJAXBElementProvider$General\\n  com.sun.jersey.core.impl.provider.entity.ReaderProvider\\n  com.sun.jersey.core.impl.provider.entity.DocumentProvider\\n  com.sun.jersey.core.impl.provider.entity.SourceProvider$StreamSourceReader\\n  com.sun.jersey.core.impl.provider.entity.SourceProvider$SAXSourceReader\\n  com.sun.jersey.core.impl.provider.entity.SourceProvider$DOMSourceReader\\n  com.sun.jersey.json.impl.provider.entity.JSONJAXBElementProvider$General\\n  com.sun.jersey.json.impl.provider.entity.JSONArrayProvider$General\\n  com.sun.jersey.json.impl.provider.entity.JSONObjectProvider$General\\n  com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\\n  com.sun.jersey.core.impl.provider.entity.XMLRootElementProvider$General\\n  com.sun.jersey.core.impl.provider.entity.XMLListElementProvider$General\\n  com.sun.jersey.core.impl.provider.entity.XMLRootObjectProvider$General\\n  com.sun.jersey.core.impl.provider.entity.EntityHolderReader\\n  com.sun.jersey.json.impl.provider.entity.JSONRootElementProvider$General\\n  com.sun.jersey.json.impl.provider.entity.JSONListElementProvider$General\\n  com.sun.jersey.json.impl.provider.entity.JacksonProviderProxy\\ntext/plain; charset=ISO-8859-1 ->\\n  com.sun.jersey.core.impl.provider.entity.StringProvider\\n  com.sun.jersey.core.impl.provider.entity.ReaderProvider\\n\"}",
+  "errorType" : null
+}, {
+  "id" : "USER15",
+  "expectedStatus" : 415,
+  "actualStatus" : 415,
+  "passed" : true,
+  "requestBody" : "invalid",
+  "responseBody" : "{\"code\":415,\"type\":\"unknown\",\"message\":\"com.sun.jersey.api.MessageException: A message body reader for Java class io.swagger.sample.model.User, and Java type class io.swagger.sample.model.User, and MIME media type text/plain; charset=ISO-8859-1 was not found.\\nThe registered message body readers compatible with the MIME media type are:\\n*/* ->\\n  com.sun.jersey.core.impl.provider.entity.FormProvider\\n  com.sun.jersey.core.impl.provider.entity.StringProvider\\n  com.sun.jersey.core.impl.provider.entity.ByteArrayProvider\\n  com.sun.jersey.core.impl.provider.entity.FileProvider\\n  com.sun.jersey.core.impl.provider.entity.InputStreamProvider\\n  com.sun.jersey.core.impl.provider.entity.DataSourceProvider\\n  com.sun.jersey.core.impl.provider.entity.XMLJAXBElementProvider$General\\n  com.sun.jersey.core.impl.provider.entity.ReaderProvider\\n  com.sun.jersey.core.impl.provider.entity.DocumentProvider\\n  com.sun.jersey.core.impl.provider.entity.SourceProvider$StreamSourceReader\\n  com.sun.jersey.core.impl.provider.entity.SourceProvider$SAXSourceReader\\n  com.sun.jersey.core.impl.provider.entity.SourceProvider$DOMSourceReader\\n  com.sun.jersey.json.impl.provider.entity.JSONJAXBElementProvider$General\\n  com.sun.jersey.json.impl.provider.entity.JSONArrayProvider$General\\n  com.sun.jersey.json.impl.provider.entity.JSONObjectProvider$General\\n  com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider\\n  com.sun.jersey.core.impl.provider.entity.XMLRootElementProvider$General\\n  com.sun.jersey.core.impl.provider.entity.XMLListElementProvider$General\\n  com.sun.jersey.core.impl.provider.entity.XMLRootObjectProvider$General\\n  com.sun.jersey.core.impl.provider.entity.EntityHolderReader\\n  com.sun.jersey.json.impl.provider.entity.JSONRootElementProvider$General\\n  com.sun.jersey.json.impl.provider.entity.JSONListElementProvider$General\\n  com.sun.jersey.json.impl.provider.entity.JacksonProviderProxy\\ntext/plain; charset=ISO-8859-1 ->\\n  com.sun.jersey.core.impl.provider.entity.StringProvider\\n  com.sun.jersey.core.impl.provider.entity.ReaderProvider\\n\"}",
+  "errorType" : null
+}, {
+  "id" : "USER16",
+  "expectedStatus" : 400,
+  "actualStatus" : 200,
+  "passed" : false,
+  "requestBody" : "{}",
+  "responseBody" : "{\"code\":200,\"type\":\"unknown\",\"message\":\"0\"}",
+  "errorType" : "assertion_error"
+}, {
+  "id" : "USER17",
+  "expectedStatus" : 400,
+  "actualStatus" : 400,
+  "passed" : true,
+  "requestBody" : "invalid",
+  "responseBody" : "{\"code\":400,\"type\":\"unknown\",\"message\":\"bad input\"}",
+  "errorType" : null
+}, {
+  "id" : "USER18",
+  "expectedStatus" : 400,
+  "actualStatus" : 404,
+  "passed" : false,
+  "requestBody" : "{}",
+  "responseBody" : "",
+  "errorType" : "invalid_test_data"
+}, {
+  "id" : "USER19",
+  "expectedStatus" : 400,
+  "actualStatus" : 405,
+  "passed" : false,
+  "requestBody" : "{}",
+  "responseBody" : "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><apiResponse><type>unknown</type></apiResponse>",
+  "errorType" : "invalid_test_data"
+}, {
+  "id" : "USER20",
+  "expectedStatus" : 400,
+  "actualStatus" : 404,
+  "passed" : false,
+  "requestBody" : "{}",
+  "responseBody" : "{\"code\":1,\"type\":\"error\",\"message\":\"User not found\"}",
+  "errorType" : "invalid_test_data"
+} ]

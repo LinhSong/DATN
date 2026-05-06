@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="20" passed="20" failed="0" skipped="0">
+<testng-results ignored="0" total="20" passed="15" failed="5" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-27T20:40:36 ICT" name="Surefire suite" finished-at="2026-04-27T20:41:19 ICT" duration-ms="43375">
+  <suite started-at="2026-05-06T18:12:06 ICT" name="Surefire suite" finished-at="2026-05-06T18:12:39 ICT" duration-ms="33014">
     <groups>
     </groups>
-    <test started-at="2026-04-27T20:40:36 ICT" name="Surefire test" finished-at="2026-04-27T20:41:19 ICT" duration-ms="43375">
+    <test started-at="2026-05-06T18:12:06 ICT" name="Surefire test" finished-at="2026-05-06T18:12:39 ICT" duration-ms="33014">
       <class name="test.ApiTest">
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:36 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:40:44 ICT" duration-ms="7644" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:06 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:11 ICT" duration-ms="4529" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,216 +18,421 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:44 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:40:46 ICT" duration-ms="1564" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:11 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:12 ICT" duration-ms="1539" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@4b8137c5]]>
+                <![CDATA[model.TestCase@627ff1b8]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:46 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:40:47 ICT" duration-ms="1624" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:12 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:14 ICT" duration-ms="1435" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@4538856f]]>
+                <![CDATA[model.TestCase@7c1a8f0f]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:47 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:40:49 ICT" duration-ms="1690" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:14 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:15 ICT" duration-ms="1339" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@348137e8]]>
+                <![CDATA[model.TestCase@33f2cfda]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:49 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:40:51 ICT" duration-ms="1792" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:15 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:16 ICT" duration-ms="1374" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@5bcec67e]]>
+                <![CDATA[model.TestCase@776015fc]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:51 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:40:52 ICT" duration-ms="1492" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:16 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:18 ICT" duration-ms="1350" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@623e0631]]>
+                <![CDATA[model.TestCase@7f3ca64a]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:52 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:40:54 ICT" duration-ms="1530" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:18 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:19 ICT" duration-ms="1407" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@4a058df8]]>
+                <![CDATA[model.TestCase@5d5c41e5]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:54 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:40:55 ICT" duration-ms="1680" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:19 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:21 ICT" duration-ms="1387" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@195580ba]]>
+                <![CDATA[model.TestCase@2eada095]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:40:55 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:00 ICT" duration-ms="4860" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:21 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:22 ICT" duration-ms="1372" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@43da0955]]>
+                <![CDATA[model.TestCase@443a53df]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:00 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:02 ICT" duration-ms="1631" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:22 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:23 ICT" duration-ms="1394" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@72ce812e]]>
+                <![CDATA[model.TestCase@49fdbe2b]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:02 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:03 ICT" duration-ms="1563" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:23 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:25 ICT" duration-ms="1324" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@b14b60a]]>
+                <![CDATA[model.TestCase@2dd1086]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:03 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:05 ICT" duration-ms="1532" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:25 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:26 ICT" duration-ms="1367" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@9fe720a]]>
+                <![CDATA[model.TestCase@3830f918]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:05 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:06 ICT" duration-ms="1537" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:26 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:28 ICT" duration-ms="1580" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@68ea253b]]>
+                <![CDATA[model.TestCase@60bf494c]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[USER13 | Expected: 404 | Actual: 405 | ErrorType: invalid_test_data]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: USER13 | Expected: 404 | Actual: 405 | ErrorType: invalid_test_data
+at test.ApiTest.runTest(ApiTest.java:148)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest -->
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:28 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:29 ICT" duration-ms="1359" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[model.TestCase@2313db84]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:07 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:08 ICT" duration-ms="1737" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:29 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:30 ICT" duration-ms="1381" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@56a4abd0]]>
+                <![CDATA[model.TestCase@132e3594]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:08 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:10 ICT" duration-ms="1537" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:30 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:32 ICT" duration-ms="1372" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@4b9dbf07]]>
+                <![CDATA[model.TestCase@78d73b1b]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[USER16 | Expected: 400 | Actual: 200 | ErrorType: assertion_error]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: USER16 | Expected: 400 | Actual: 200 | ErrorType: assertion_error
+at test.ApiTest.runTest(ApiTest.java:148)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest -->
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:32 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:34 ICT" duration-ms="2162" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[model.TestCase@5fb54740]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:10 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:11 ICT" duration-ms="1641" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:34 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:35 ICT" duration-ms="1339" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@36224f93]]>
+                <![CDATA[model.TestCase@c9b5a99]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[USER18 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: USER18 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data
+at test.ApiTest.runTest(ApiTest.java:148)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:11 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:13 ICT" duration-ms="1616" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:35 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:37 ICT" duration-ms="1437" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@de77146]]>
+                <![CDATA[model.TestCase@9785903]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[USER19 | Expected: 400 | Actual: 405 | ErrorType: invalid_test_data]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: USER19 | Expected: 400 | Actual: 405 | ErrorType: invalid_test_data
+at test.ApiTest.runTest(ApiTest.java:148)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:13 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:15 ICT" duration-ms="1702" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:37 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-06T18:12:39 ICT" duration-ms="1852" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@4a2bf50f]]>
+                <![CDATA[model.TestCase@2c47a053]]>
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[USER20 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: USER20 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data
+at test.ApiTest.runTest(ApiTest.java:148)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:15 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:16 ICT" duration-ms="1667" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[model.TestCase@5bfc79cb]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:16 ICT" name="runTest" data-provider="api-data" finished-at="2026-04-27T20:41:19 ICT" duration-ms="2801" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[model.TestCase@5fd43e58]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runTest -->
-        <test-method is-config="true" signature="summary()[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-04-27T20:41:19 ICT" name="summary" finished-at="2026-04-27T20:41:19 ICT" duration-ms="39" status="PASS">
+        <test-method is-config="true" signature="summary()[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-06T18:12:39 ICT" name="summary" finished-at="2026-05-06T18:12:39 ICT" duration-ms="70" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- summary -->

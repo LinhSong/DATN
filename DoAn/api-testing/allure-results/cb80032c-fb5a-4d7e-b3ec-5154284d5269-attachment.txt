@@ -1,4 +1,0 @@
-TC13 | Expected: 400 | Actual: 404
-TC15 | Expected: 400 | Actual: 404
-TC16 | Expected: 400 | Actual: 415
-TC18 | Expected: 400 | Actual: 404

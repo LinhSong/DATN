@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Assertion Error",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*ERROR_TYPE: assertion_error.*"
+  },
+  {
+    "name": "Invalid Data",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*ERROR_TYPE: invalid_test_data.*"
+  },
+  {
+    "name": "Runtime Error",
+    "matchedStatuses": ["broken"],
+    "messageRegex": ".*ERROR_TYPE: runtime_error.*"
+  },
+  {
+    "name": "Invalid Endpoint",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*ERROR_TYPE: invalid_endpoint.*"
+  }
+]

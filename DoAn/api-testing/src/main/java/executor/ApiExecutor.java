@@ -20,65 +20,94 @@ public class ApiExecutor {
 
         try {
 
-            // BUILD ENDPOINT + PATH PARAMS
+            // ===== BUILD ENDPOINT =====
             String endpoint = tc.endpoint;
 
             if (tc.pathParams != null && !tc.pathParams.isEmpty()) {
                 for (Map.Entry<String, Object> entry : tc.pathParams.entrySet()) {
-                    String key = entry.getKey();
-                    Object value = entry.getValue();
-
-                    // thay thế {orderId} nếu có
-                    endpoint = endpoint.replace("{" + key + "}", String.valueOf(value));
+                    endpoint = endpoint.replace(
+                            "{" + entry.getKey() + "}",
+                            String.valueOf(entry.getValue())
+                    );
                 }
             }
 
             Allure.step("Request: " + tc.method + " " + endpoint);
 
-            // REQUEST BODY HANDLE (FIX STRING CASE)
-            Object requestBody = tc.body;
-            String payload;
+            // ===== PREPARE PAYLOAD =====
+            String payload = (tc.body != null) ? tc.body.toString() : "";
 
-            if (tc.body instanceof String) {
-                payload = (String) tc.body;
-                requestBody = payload;
-            } else if (tc.body != null) {
-                payload = tc.body.toString();
+            Response response;
+
+            // ===== HANDLE CONTENT-TYPE =====
+            if (tc.headers != null &&
+                "application/x-www-form-urlencoded".equalsIgnoreCase(
+                        String.valueOf(tc.headers.get("Content-Type")))) {
+
+                // ===== FORM DATA =====
+                if (tc.body instanceof Map) {
+                    response = RestAssured
+                            .given()
+                            .baseUri(BASE_URL)
+                            .headers(tc.headers)
+                            .body(tc.body)
+                            .when()
+                            .request(tc.method, endpoint);
+                } else {
+                    // ❗ body không phải map → gửi raw
+                    response = RestAssured
+                            .given()
+                            .baseUri(BASE_URL)
+                            .headers(tc.headers)
+                            .body(payload)
+                            .when()
+                            .request(tc.method, endpoint);
+                }
+
             } else {
-                payload = "";
-            }
 
-            // GỬI REQUEST
-            Response response = RestAssured
-                    .given()
-                    .baseUri(BASE_URL)
-                    .headers(tc.headers)
-                    .body(requestBody)
-                    .when()
-                    .request(tc.method, endpoint);
+                // ===== JSON =====
+                if (tc.body instanceof Map) {
+                    response = RestAssured
+                            .given()
+                            .baseUri(BASE_URL)
+                            .headers(tc.headers)
+                            .body(tc.body)
+                            .when()
+                            .request(tc.method, endpoint);
+                } else {
+                    // ❗ body là string (invalid test)
+                    response = RestAssured
+                            .given()
+                            .baseUri(BASE_URL)
+                            .headers(tc.headers)
+                            .body(payload)
+                            .when()
+                            .request(tc.method, endpoint);
+                }
+            }
 
             int status = response.getStatusCode();
 
-            // SAVE RESULT
+            // ===== SAVE RESULT =====
             result.requestBody = payload;
             result.responseBody = response.asString();
-
-            //ALLURE ATTACH
-            Allure.addAttachment("Request JSON", "application/json", payload);
-            Allure.addAttachment("Response JSON", "application/json", response.asString());
-            Allure.addAttachment("Response Pretty", response.asPrettyString());
-            Allure.addAttachment("Status Code", String.valueOf(status));
-
             result.actualStatus = status;
             result.passed = (status == result.expectedStatus);
 
+            // ===== ALLURE ATTACH =====
+            Allure.addAttachment("Request", payload);
+            Allure.addAttachment("Response", response.asString());
+            Allure.addAttachment("Response Pretty", response.asPrettyString());
+            Allure.addAttachment("Status Code", String.valueOf(status));
+
         } catch (Exception e) {
 
-             result.passed = false;
+            result.passed = false;
             result.errorType = "runtime_error";
             result.actualStatus = 0;
+
             Allure.addAttachment("ERROR", e.toString());
-             
         }
 
         return result;

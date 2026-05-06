@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import io.qameta.allure.*;
 import org.testng.annotations.Listeners;
+//import org.testng.Assert;
 
 @Listeners({io.qameta.allure.testng.AllureTestNg.class})
 @Epic("API Testing Framework")
@@ -34,6 +35,7 @@ public class ApiTest {
     private static List<String> invalidDataList = new ArrayList<>();
     private static List<String> runtimeList = new ArrayList<>();
     private static List<String> endpointList = new ArrayList<>();
+    private static List<TestResult> results = new ArrayList<>();
 
     @DataProvider(name = "api-data")
     public Object[][] getData() throws Exception {
@@ -63,7 +65,13 @@ public class ApiTest {
         total++;
 
         Allure.step("Execute API: " + tc.id);
+
+        // 🔥 LABEL THÊM (RẤT QUAN TRỌNG CHO REPORT)
+        Allure.label("endpoint", tc.endpoint);
+        Allure.label("method", tc.method);
+
         TestResult result = ApiExecutor.execute(tc);
+        results.add(result);
 
         int expected = result.expectedStatus;
         int actual = result.actualStatus;
@@ -73,15 +81,14 @@ public class ApiTest {
             passedCount++;
         }
 
-        // ===== LOG =====
         System.out.println(
                 tc.id +
                         " | Expected: " + expected +
                         " | Actual: " + actual +
                         " | Passed: " + passed
         );
-        //Assert.assertEquals(actual, expected, "❌ Test failed: " + tc.id);
-        // ===== ALLURE BASIC =====
+
+        // ALLURE BASIC 
         Allure.addAttachment("Test Case ID", tc.id);
         Allure.addAttachment("Expected", String.valueOf(expected));
         Allure.addAttachment("Actual", String.valueOf(actual));
@@ -90,33 +97,29 @@ public class ApiTest {
         Allure.addAttachment("Request", String.valueOf(result.requestBody));
         Allure.addAttachment("Response", String.valueOf(result.responseBody));
 
-        // ===== RQ2 ERROR CLASSIFICATION =====
+        //  ERROR CLASSIFICATION 
         if (!passed) {
 
             String errorType;
 
-             // ❌ runtime (không có response)
             if (actual == 0) {
                 errorType = "runtime_error";
                 runtimeErrors++;
                 runtimeList.add(tc.id + " | No response");
             }
 
-    // ❌ endpoint sai
-             else if (actual == 404 && tc.endpoint.contains("unknown")) {
+            else if (actual == 404 && tc.endpoint.contains("unknown")) {
                 errorType = "invalid_endpoint";
                 invalidEndpointErrors++;
                 endpointList.add(tc.id + " | " + tc.endpoint);
             }
 
-            // ❌ invalid data (4xx nhưng không phải endpoint)
             else if (actual >= 400 && actual < 500 && !tc.is_valid_testcase) {
                 errorType = "invalid_test_data";
                 invalidDataErrors++;
                 invalidDataList.add(tc.id + " | Expected: " + expected + " | Actual: " + actual);
             }
 
-            // ❌ còn lại là assertion
             else {
                 errorType = "assertion_error";
                 assertionErrors++;
@@ -124,6 +127,12 @@ public class ApiTest {
             }
 
             result.errorType = errorType;
+
+            Allure.label("errorType", errorType);
+
+            // 🔥 QUAN TRỌNG: để Allure match categories
+            Allure.step("ERROR_TYPE: " + errorType);
+
             Allure.addAttachment("Error Type", errorType);
         }
 
@@ -133,6 +142,16 @@ public class ApiTest {
                         " | Actual: " + actual +
                         " | Passed: " + passed
         );
+
+        // 🔥 FORCE FAIL (KHÔNG DÙNG Assert nữa)
+        if (actual != expected) {
+            throw new AssertionError(
+                tc.id +
+                " | Expected: " + expected +
+                " | Actual: " + actual +
+                " | ErrorType: " + result.errorType
+            );
+        }
     }
 
     @AfterClass
@@ -141,21 +160,18 @@ public class ApiTest {
         int failed = total - passedCount;
         double passRate = total == 0 ? 0 : (passedCount * 100.0) / total;
 
-        // ===== SUMMARY =====
         System.out.println("\n===== RQ2 - ERROR ANALYSIS SUMMARY =====");
         System.out.println("Total: " + total);
         System.out.println("Passed: " + passedCount);
         System.out.println("Failed: " + failed);
         System.out.printf("Pass rate: %.2f%%\n", passRate);
 
-        // ===== DISTRIBUTION =====
         System.out.println("\n===== ERROR DISTRIBUTION =====");
         System.out.println("Assertion Errors: " + assertionErrors);
         System.out.println("Invalid Data Errors: " + invalidDataErrors);
         System.out.println("Runtime Errors: " + runtimeErrors);
         System.out.println("Invalid Endpoint Errors: " + invalidEndpointErrors);
 
-        // ===== BREAKDOWN =====
         System.out.println("\n===== ASSERTION ERRORS =====");
         assertionList.forEach(System.out::println);
 
@@ -168,42 +184,18 @@ public class ApiTest {
         System.out.println("\n===== INVALID ENDPOINT =====");
         endpointList.forEach(System.out::println);
 
-        // ===== ALLURE SUMMARY =====
         Allure.addAttachment("Total", String.valueOf(total));
         Allure.addAttachment("Passed", String.valueOf(passedCount));
         Allure.addAttachment("Failed", String.valueOf(failed));
         Allure.addAttachment("Pass rate", String.format("%.2f%%", passRate));
 
-        // ===== ALLURE RQ2 =====
-        Allure.addAttachment("RQ2 Summary",
+        Allure.addAttachment("Summary",
                 "Assertion Errors: " + assertionErrors + "\n" +
                         "Invalid Data: " + invalidDataErrors + "\n" +
                         "Runtime Errors: " + runtimeErrors + "\n" +
                         "Invalid Endpoint: " + invalidEndpointErrors
         );
 
-        // 🔥 CHI TIẾT TỪNG NHÓM (CÁI QUAN TRỌNG NHẤT)
-        Allure.addAttachment(
-                "Assertion Error Details",
-                String.join("\n", assertionList)
-        );
-
-        Allure.addAttachment(
-                "Invalid Data Details",
-                String.join("\n", invalidDataList)
-        );
-
-        Allure.addAttachment(
-                "Runtime Error Details",
-                String.join("\n", runtimeList)
-        );
-
-        Allure.addAttachment(
-                "Invalid Endpoint Details",
-                String.join("\n", endpointList)
-        );
-
-        // 🔥 FULL REPORT (ăn điểm cao)
         Allure.addAttachment(
                 "RQ2 FULL REPORT",
                 "===== ASSERTION =====\n" + String.join("\n", assertionList) +
@@ -211,5 +203,11 @@ public class ApiTest {
                         "\n\n===== RUNTIME =====\n" + String.join("\n", runtimeList) +
                         "\n\n===== ENDPOINT =====\n" + String.join("\n", endpointList)
         );
+        try {
+            utils.ResultWriter.write(results, "output/result.json");
+            System.out.println("✅ Saved result to output/result.json");
+        } catch (Exception e) {
+            System.out.println("❌ Error writing result.json: " + e.getMessage());
+        }
     }
 }

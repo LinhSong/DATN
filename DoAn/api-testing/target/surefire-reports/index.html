@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 5 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Surefire_suite" class="navigator-link">
-              <span class="suite-name border-passed">Surefire suite</span>
+              <span class="suite-name border-failed">Surefire suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -92,7 +92,41 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">20 methods,   20 passed</span>
+                    <span class="method-stats">20 methods, 5 failed,   15 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Surefire_suite" class="hide-methods failed suite-Surefire_suite"> (hide)</a> <!-- hide-methods failed suite-Surefire_suite -->
+                      <a href="#" panel-name="suite-Surefire_suite" class="show-methods failed suite-Surefire_suite"> (show)</a> <!-- show-methods failed suite-Surefire_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Surefire_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@c9b5a99)">runTest(model.TestCase@c9b5a99)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@9785903)">runTest(model.TestCase@9785903)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@78d73b1b)">runTest(model.TestCase@78d73b1b)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@2c47a053)">runTest(model.TestCase@2c47a053)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@60bf494c)">runTest(model.TestCase@60bf494c)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Surefire_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,17 +137,12 @@
                     <div class="method-list-content passed suite-Surefire_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@623e0631)">runTest(model.TestCase@623e0631)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@132e3594)">runTest(model.TestCase@132e3594)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@de77146)">runTest(model.TestCase@de77146)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@5bfc79cb)">runTest(model.TestCase@5bfc79cb)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@627ff1b8)">runTest(model.TestCase@627ff1b8)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -123,82 +152,62 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@4538856f)">runTest(model.TestCase@4538856f)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@2eada095)">runTest(model.TestCase@2eada095)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@72ce812e)">runTest(model.TestCase@72ce812e)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@2313db84)">runTest(model.TestCase@2313db84)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@36224f93)">runTest(model.TestCase@36224f93)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@49fdbe2b)">runTest(model.TestCase@49fdbe2b)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@56a4abd0)">runTest(model.TestCase@56a4abd0)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@443a53df)">runTest(model.TestCase@443a53df)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@4a058df8)">runTest(model.TestCase@4a058df8)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@7f3ca64a)">runTest(model.TestCase@7f3ca64a)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@348137e8)">runTest(model.TestCase@348137e8)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@33f2cfda)">runTest(model.TestCase@33f2cfda)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@4a2bf50f)">runTest(model.TestCase@4a2bf50f)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@776015fc)">runTest(model.TestCase@776015fc)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@68ea253b)">runTest(model.TestCase@68ea253b)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@5d5c41e5)">runTest(model.TestCase@5d5c41e5)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@4b9dbf07)">runTest(model.TestCase@4b9dbf07)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@2dd1086)">runTest(model.TestCase@2dd1086)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@195580ba)">runTest(model.TestCase@195580ba)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@3830f918)">runTest(model.TestCase@3830f918)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@43da0955)">runTest(model.TestCase@43da0955)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@5fb54740)">runTest(model.TestCase@5fb54740)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@4b8137c5)">runTest(model.TestCase@4b8137c5)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@9fe720a)">runTest(model.TestCase@9fe720a)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@5fd43e58)">runTest(model.TestCase@5fd43e58)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@5bcec67e)">runTest(model.TestCase@5bcec67e)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@b14b60a)">runTest(model.TestCase@b14b60a)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@7c1a8f0f)">runTest(model.TestCase@7c1a8f0f)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Surefire_suite -->
@@ -213,6 +222,79 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Surefire_suite" class="panel Surefire_suite">
+          <div class="suite-Surefire_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">test.ApiTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="runTest(model.TestCase@c9b5a99)">
+                  </a> <!-- runTest(model.TestCase@c9b5a99) -->
+                  <span class="method-name">runTest</span>
+                  <span class="parameters">(model.TestCase@c9b5a99)</span>
+                  <div class="stack-trace">java.lang.AssertionError: USER18 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data
+	at test.ApiTest.runTest(ApiTest.java:148)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runTest(model.TestCase@9785903)">
+                  </a> <!-- runTest(model.TestCase@9785903) -->
+                  <span class="method-name">runTest</span>
+                  <span class="parameters">(model.TestCase@9785903)</span>
+                  <div class="stack-trace">java.lang.AssertionError: USER19 | Expected: 400 | Actual: 405 | ErrorType: invalid_test_data
+	at test.ApiTest.runTest(ApiTest.java:148)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runTest(model.TestCase@78d73b1b)">
+                  </a> <!-- runTest(model.TestCase@78d73b1b) -->
+                  <span class="method-name">runTest</span>
+                  <span class="parameters">(model.TestCase@78d73b1b)</span>
+                  <div class="stack-trace">java.lang.AssertionError: USER16 | Expected: 400 | Actual: 200 | ErrorType: assertion_error
+	at test.ApiTest.runTest(ApiTest.java:148)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runTest(model.TestCase@2c47a053)">
+                  </a> <!-- runTest(model.TestCase@2c47a053) -->
+                  <span class="method-name">runTest</span>
+                  <span class="parameters">(model.TestCase@2c47a053)</span>
+                  <div class="stack-trace">java.lang.AssertionError: USER20 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data
+	at test.ApiTest.runTest(ApiTest.java:148)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runTest(model.TestCase@60bf494c)">
+                  </a> <!-- runTest(model.TestCase@60bf494c) -->
+                  <span class="method-name">runTest</span>
+                  <span class="parameters">(model.TestCase@60bf494c)</span>
+                  <div class="stack-trace">java.lang.AssertionError: USER13 | Expected: 404 | Actual: 405 | ErrorType: invalid_test_data
+	at test.ApiTest.runTest(ApiTest.java:148)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-failed -->
           <div class="suite-Surefire_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -221,26 +303,18 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@623e0631)">
-                  </a> <!-- runTest(model.TestCase@623e0631) -->
+                  <a name="runTest(model.TestCase@132e3594)">
+                  </a> <!-- runTest(model.TestCase@132e3594) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@623e0631)</span>
+                  <span class="parameters">(model.TestCase@132e3594)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@de77146)">
-                  </a> <!-- runTest(model.TestCase@de77146) -->
+                  <a name="runTest(model.TestCase@627ff1b8)">
+                  </a> <!-- runTest(model.TestCase@627ff1b8) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@de77146)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="runTest(model.TestCase@5bfc79cb)">
-                  </a> <!-- runTest(model.TestCase@5bfc79cb) -->
-                  <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@5bfc79cb)</span>
+                  <span class="parameters">(model.TestCase@627ff1b8)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -253,130 +327,98 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@4538856f)">
-                  </a> <!-- runTest(model.TestCase@4538856f) -->
+                  <a name="runTest(model.TestCase@2eada095)">
+                  </a> <!-- runTest(model.TestCase@2eada095) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@4538856f)</span>
+                  <span class="parameters">(model.TestCase@2eada095)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@72ce812e)">
-                  </a> <!-- runTest(model.TestCase@72ce812e) -->
+                  <a name="runTest(model.TestCase@2313db84)">
+                  </a> <!-- runTest(model.TestCase@2313db84) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@72ce812e)</span>
+                  <span class="parameters">(model.TestCase@2313db84)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@36224f93)">
-                  </a> <!-- runTest(model.TestCase@36224f93) -->
+                  <a name="runTest(model.TestCase@49fdbe2b)">
+                  </a> <!-- runTest(model.TestCase@49fdbe2b) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@36224f93)</span>
+                  <span class="parameters">(model.TestCase@49fdbe2b)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@56a4abd0)">
-                  </a> <!-- runTest(model.TestCase@56a4abd0) -->
+                  <a name="runTest(model.TestCase@443a53df)">
+                  </a> <!-- runTest(model.TestCase@443a53df) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@56a4abd0)</span>
+                  <span class="parameters">(model.TestCase@443a53df)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@4a058df8)">
-                  </a> <!-- runTest(model.TestCase@4a058df8) -->
+                  <a name="runTest(model.TestCase@7f3ca64a)">
+                  </a> <!-- runTest(model.TestCase@7f3ca64a) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@4a058df8)</span>
+                  <span class="parameters">(model.TestCase@7f3ca64a)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@348137e8)">
-                  </a> <!-- runTest(model.TestCase@348137e8) -->
+                  <a name="runTest(model.TestCase@33f2cfda)">
+                  </a> <!-- runTest(model.TestCase@33f2cfda) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@348137e8)</span>
+                  <span class="parameters">(model.TestCase@33f2cfda)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@4a2bf50f)">
-                  </a> <!-- runTest(model.TestCase@4a2bf50f) -->
+                  <a name="runTest(model.TestCase@776015fc)">
+                  </a> <!-- runTest(model.TestCase@776015fc) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@4a2bf50f)</span>
+                  <span class="parameters">(model.TestCase@776015fc)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@68ea253b)">
-                  </a> <!-- runTest(model.TestCase@68ea253b) -->
+                  <a name="runTest(model.TestCase@5d5c41e5)">
+                  </a> <!-- runTest(model.TestCase@5d5c41e5) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@68ea253b)</span>
+                  <span class="parameters">(model.TestCase@5d5c41e5)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@4b9dbf07)">
-                  </a> <!-- runTest(model.TestCase@4b9dbf07) -->
+                  <a name="runTest(model.TestCase@2dd1086)">
+                  </a> <!-- runTest(model.TestCase@2dd1086) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@4b9dbf07)</span>
+                  <span class="parameters">(model.TestCase@2dd1086)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@195580ba)">
-                  </a> <!-- runTest(model.TestCase@195580ba) -->
+                  <a name="runTest(model.TestCase@3830f918)">
+                  </a> <!-- runTest(model.TestCase@3830f918) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@195580ba)</span>
+                  <span class="parameters">(model.TestCase@3830f918)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@43da0955)">
-                  </a> <!-- runTest(model.TestCase@43da0955) -->
+                  <a name="runTest(model.TestCase@5fb54740)">
+                  </a> <!-- runTest(model.TestCase@5fb54740) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@43da0955)</span>
+                  <span class="parameters">(model.TestCase@5fb54740)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@4b8137c5)">
-                  </a> <!-- runTest(model.TestCase@4b8137c5) -->
+                  <a name="runTest(model.TestCase@7c1a8f0f)">
+                  </a> <!-- runTest(model.TestCase@7c1a8f0f) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@4b8137c5)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="runTest(model.TestCase@9fe720a)">
-                  </a> <!-- runTest(model.TestCase@9fe720a) -->
-                  <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@9fe720a)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="runTest(model.TestCase@5fd43e58)">
-                  </a> <!-- runTest(model.TestCase@5fd43e58) -->
-                  <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@5fd43e58)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="runTest(model.TestCase@5bcec67e)">
-                  </a> <!-- runTest(model.TestCase@5bcec67e) -->
-                  <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@5bcec67e)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="runTest(model.TestCase@b14b60a)">
-                  </a> <!-- runTest(model.TestCase@b14b60a) -->
-                  <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@b14b60a)</span>
+                  <span class="parameters">(model.TestCase@7c1a8f0f)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -436,88 +478,88 @@ data.addRows(20);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runTest')
 data.setCell(0, 2, 'test.ApiTest')
-data.setCell(0, 3, 7644);
+data.setCell(0, 3, 4529);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'runTest')
 data.setCell(1, 2, 'test.ApiTest')
-data.setCell(1, 3, 4860);
+data.setCell(1, 3, 2162);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'runTest')
 data.setCell(2, 2, 'test.ApiTest')
-data.setCell(2, 3, 2801);
+data.setCell(2, 3, 1852);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'runTest')
 data.setCell(3, 2, 'test.ApiTest')
-data.setCell(3, 3, 1792);
+data.setCell(3, 3, 1580);
 data.setCell(4, 0, 4)
 data.setCell(4, 1, 'runTest')
 data.setCell(4, 2, 'test.ApiTest')
-data.setCell(4, 3, 1737);
+data.setCell(4, 3, 1539);
 data.setCell(5, 0, 5)
 data.setCell(5, 1, 'runTest')
 data.setCell(5, 2, 'test.ApiTest')
-data.setCell(5, 3, 1702);
+data.setCell(5, 3, 1437);
 data.setCell(6, 0, 6)
 data.setCell(6, 1, 'runTest')
 data.setCell(6, 2, 'test.ApiTest')
-data.setCell(6, 3, 1690);
+data.setCell(6, 3, 1435);
 data.setCell(7, 0, 7)
 data.setCell(7, 1, 'runTest')
 data.setCell(7, 2, 'test.ApiTest')
-data.setCell(7, 3, 1680);
+data.setCell(7, 3, 1407);
 data.setCell(8, 0, 8)
 data.setCell(8, 1, 'runTest')
 data.setCell(8, 2, 'test.ApiTest')
-data.setCell(8, 3, 1667);
+data.setCell(8, 3, 1394);
 data.setCell(9, 0, 9)
 data.setCell(9, 1, 'runTest')
 data.setCell(9, 2, 'test.ApiTest')
-data.setCell(9, 3, 1641);
+data.setCell(9, 3, 1387);
 data.setCell(10, 0, 10)
 data.setCell(10, 1, 'runTest')
 data.setCell(10, 2, 'test.ApiTest')
-data.setCell(10, 3, 1631);
+data.setCell(10, 3, 1381);
 data.setCell(11, 0, 11)
 data.setCell(11, 1, 'runTest')
 data.setCell(11, 2, 'test.ApiTest')
-data.setCell(11, 3, 1624);
+data.setCell(11, 3, 1374);
 data.setCell(12, 0, 12)
 data.setCell(12, 1, 'runTest')
 data.setCell(12, 2, 'test.ApiTest')
-data.setCell(12, 3, 1616);
+data.setCell(12, 3, 1372);
 data.setCell(13, 0, 13)
 data.setCell(13, 1, 'runTest')
 data.setCell(13, 2, 'test.ApiTest')
-data.setCell(13, 3, 1564);
+data.setCell(13, 3, 1372);
 data.setCell(14, 0, 14)
 data.setCell(14, 1, 'runTest')
 data.setCell(14, 2, 'test.ApiTest')
-data.setCell(14, 3, 1563);
+data.setCell(14, 3, 1367);
 data.setCell(15, 0, 15)
 data.setCell(15, 1, 'runTest')
 data.setCell(15, 2, 'test.ApiTest')
-data.setCell(15, 3, 1537);
+data.setCell(15, 3, 1359);
 data.setCell(16, 0, 16)
 data.setCell(16, 1, 'runTest')
 data.setCell(16, 2, 'test.ApiTest')
-data.setCell(16, 3, 1537);
+data.setCell(16, 3, 1350);
 data.setCell(17, 0, 17)
 data.setCell(17, 1, 'runTest')
 data.setCell(17, 2, 'test.ApiTest')
-data.setCell(17, 3, 1532);
+data.setCell(17, 3, 1339);
 data.setCell(18, 0, 18)
 data.setCell(18, 1, 'runTest')
 data.setCell(18, 2, 'test.ApiTest')
-data.setCell(18, 3, 1530);
+data.setCell(18, 3, 1339);
 data.setCell(19, 0, 19)
 data.setCell(19, 1, 'runTest')
 data.setCell(19, 2, 'test.ApiTest')
-data.setCell(19, 3, 1492);
+data.setCell(19, 3, 1324);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 42 seconds</span>
+              <span class="suite-total-time">Total running time: 32 seconds</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -549,84 +591,94 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@4b8137c5)</span>
-                <span class="method-start">7713 ms</span>
+                <span class="method-name">runTest(model.TestCase@627ff1b8)</span>
+                <span class="method-start">4683 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@4538856f)</span>
-                <span class="method-start">9282 ms</span>
+                <span class="method-name">runTest(model.TestCase@7c1a8f0f)</span>
+                <span class="method-start">6229 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@348137e8)</span>
-                <span class="method-start">10909 ms</span>
+                <span class="method-name">runTest(model.TestCase@33f2cfda)</span>
+                <span class="method-start">7673 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@5bcec67e)</span>
-                <span class="method-start">12610 ms</span>
+                <span class="method-name">runTest(model.TestCase@776015fc)</span>
+                <span class="method-start">9020 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@623e0631)</span>
-                <span class="method-start">14407 ms</span>
+                <span class="method-name">runTest(model.TestCase@7f3ca64a)</span>
+                <span class="method-start">10405 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@4a058df8)</span>
-                <span class="method-start">15903 ms</span>
+                <span class="method-name">runTest(model.TestCase@5d5c41e5)</span>
+                <span class="method-start">11763 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@195580ba)</span>
-                <span class="method-start">17436 ms</span>
+                <span class="method-name">runTest(model.TestCase@2eada095)</span>
+                <span class="method-start">13179 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@43da0955)</span>
-                <span class="method-start">19120 ms</span>
+                <span class="method-name">runTest(model.TestCase@443a53df)</span>
+                <span class="method-start">14573 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@72ce812e)</span>
-                <span class="method-start">23986 ms</span>
+                <span class="method-name">runTest(model.TestCase@49fdbe2b)</span>
+                <span class="method-start">15957 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@b14b60a)</span>
-                <span class="method-start">25620 ms</span>
+                <span class="method-name">runTest(model.TestCase@2dd1086)</span>
+                <span class="method-start">17359 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@9fe720a)</span>
-                <span class="method-start">27187 ms</span>
+                <span class="method-name">runTest(model.TestCase@3830f918)</span>
+                <span class="method-start">18690 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@68ea253b)</span>
-                <span class="method-start">28722 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runTest(model.TestCase@60bf494c)</span>
+                <span class="method-start">20064 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@56a4abd0)</span>
-                <span class="method-start">30266 ms</span>
+                <span class="method-name">runTest(model.TestCase@2313db84)</span>
+                <span class="method-start">21656 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@4b9dbf07)</span>
-                <span class="method-start">32006 ms</span>
+                <span class="method-name">runTest(model.TestCase@132e3594)</span>
+                <span class="method-start">23024 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@36224f93)</span>
-                <span class="method-start">33548 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runTest(model.TestCase@78d73b1b)</span>
+                <span class="method-start">24413 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@de77146)</span>
-                <span class="method-start">35194 ms</span>
+                <span class="method-name">runTest(model.TestCase@5fb54740)</span>
+                <span class="method-start">25805 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@4a2bf50f)</span>
-                <span class="method-start">36813 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runTest(model.TestCase@c9b5a99)</span>
+                <span class="method-start">27973 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@5bfc79cb)</span>
-                <span class="method-start">38530 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runTest(model.TestCase@9785903)</span>
+                <span class="method-start">29322 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@5fd43e58)</span>
-                <span class="method-start">40201 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runTest(model.TestCase@2c47a053)</span>
+                <span class="method-start">30768 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">summary</span>
-                <span class="method-start">43006 ms</span>
+                <span class="method-start">32626 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

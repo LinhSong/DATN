@@ -1,5 +1,0 @@
-TC02 | Expected: 200 | Actual: 404
-TC03 | Expected: 200 | Actual: 404
-TC05 | Expected: 200 | Actual: 404
-TC09 | Expected: 200 | Actual: 404
-TC14 | Expected: 404 | Actual: 200

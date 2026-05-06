@@ -1,1 +1,0 @@
-java.net.UnknownHostException: No such host is known (petstore.swagger.io)
