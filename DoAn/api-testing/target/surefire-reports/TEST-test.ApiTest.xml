@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="test.ApiTest" time="34.086" tests="20" errors="0" skipped="0" failures="5">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="test.ApiTest" time="6.862" tests="1" errors="0" skipped="0" failures="1">
   <properties>
     <property name="surefire.printSummary" value="false"/>
     <property name="java.specification.version" value="22"/>
@@ -16,10 +16,10 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
-    <property name="sun.java.command" value="C:\Users\ADMIN\AppData\Local\Temp\surefire1025091480187010025\surefirebooter-20260506181204648_3.jar C:\Users\ADMIN\AppData\Local\Temp\surefire1025091480187010025 2026-05-06T18-12-04_302-jvmRun1 surefire-20260506181204648_1tmp surefire_0-20260506181204648_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\ADMIN\AppData\Local\Temp\surefire7030160092422980411\surefirebooter-20260507085222442_3.jar C:\Users\ADMIN\AppData\Local\Temp\surefire7030160092422980411 2026-05-07T08-52-22_026-jvmRun1 surefire-20260507085222442_1tmp surefire_0-20260507085222442_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\ADMIN\OneDrive\Attachments\Desktop\DATN\DoAn\api-testing\target\test-classes;C:\Users\ADMIN\OneDrive\Attachments\Desktop\DATN\DoAn\api-testing\target\classes;C:\Users\ADMIN\.m2\repository\io\rest-assured\rest-assured\5.3.0\rest-assured-5.3.0.jar;C:\Users\ADMIN\.m2\repository\org\apache\groovy\groovy\4.0.6\groovy-4.0.6.jar;C:\Users\ADMIN\.m2\repository\org\apache\groovy\groovy-xml\4.0.6\groovy-xml-4.0.6.jar;C:\Users\ADMIN\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\ADMIN\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\ADMIN\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\ADMIN\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\ADMIN\.m2\repository\org\apache\httpcomponents\httpmime\4.5.13\httpmime-4.5.13.jar;C:\Users\ADMIN\.m2\repository\org\hamcrest\hamcrest\2.1\hamcrest-2.1.jar;C:\Users\ADMIN\.m2\repository\org\ccil\cowan\tagsoup\tagsoup\1.2.1\tagsoup-1.2.1.jar;C:\Users\ADMIN\.m2\repository\io\rest-assured\json-path\5.3.0\json-path-5.3.0.jar;C:\Users\ADMIN\.m2\repository\org\apache\groovy\groovy-json\4.0.6\groovy-json-4.0.6.jar;C:\Users\ADMIN\.m2\repository\io\rest-assured\rest-assured-common\5.3.0\rest-assured-common-5.3.0.jar;C:\Users\ADMIN\.m2\repository\io\rest-assured\xml-path\5.3.0\xml-path-5.3.0.jar;C:\Users\ADMIN\.m2\repository\org\apache\commons\commons-lang3\3.11\commons-lang3-3.11.jar;C:\Users\ADMIN\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.0\jackson-databind-2.15.0.jar;C:\Users\ADMIN\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.0\jackson-annotations-2.15.0.jar;C:\Users\ADMIN\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.0\jackson-core-2.15.0.jar;C:\Users\ADMIN\.m2\repository\org\testng\testng\7.8.0\testng-7.8.0.jar;C:\Users\ADMIN\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\ADMIN\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\ADMIN\.m2\repository\org\webjars\jquery\3.6.1\jquery-3.6.1.jar;C:\Users\ADMIN\.m2\repository\io\qameta\allure\allure-rest-assured\2.24.0\allure-rest-assured-2.24.0.jar;C:\Users\ADMIN\.m2\repository\io\qameta\allure\allure-attachments\2.24.0\allure-attachments-2.24.0.jar;C:\Users\ADMIN\.m2\repository\org\freemarker\freemarker\2.3.31\freemarker-2.3.31.jar;C:\Users\ADMIN\.m2\repository\io\qameta\allure\allure-testng\2.24.0\allure-testng-2.24.0.jar;C:\Users\ADMIN\.m2\repository\io\qameta\allure\allure-java-commons\2.24.0\allure-java-commons-2.24.0.jar;C:\Users\ADMIN\.m2\repository\io\qameta\allure\allure-model\2.24.0\allure-model-2.24.0.jar;C:\Users\ADMIN\.m2\repository\io\qameta\allure\allure-test-filter\2.24.0\allure-test-filter-2.24.0.jar;"/>
-    <property name="allure.results.directory" value="C:\Users\ADMIN\OneDrive\Attachments\Desktop\DATN\DoAn\api-testing\allure-results\run-20260506_181155-user_testcases"/>
+    <property name="allure.results.directory" value="C:\Users\ADMIN\OneDrive\Attachments\Desktop\DATN\DoAn\api-testing\allure-results\run-20260507_085211-custom"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\ADMIN"/>
     <property name="user.language" value="en"/>
@@ -32,7 +32,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\ADMIN\AppData\Local\Temp\surefire1025091480187010025\surefirebooter-20260506181204648_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\ADMIN\AppData\Local\Temp\surefire7030160092422980411\surefirebooter-20260507085222442_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2+9-70"/>
@@ -41,7 +41,7 @@
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="file" value="C:\Users\ADMIN\AppData\Local\Temp\tmpj5_xm_mr.json"/>
+    <property name="file" value="C:\Users\ADMIN\AppData\Local\Temp\tmphlukzwqr.json"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="localRepository" value="C:\Users\ADMIN\.m2\repository"/>
@@ -61,103 +61,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="runTest[model.TestCase@604f2bd2](1)" classname="test.ApiTest" time="4.478">
-    <system-out><![CDATA[USER01 | Expected: 200 | Actual: 200 | Passed: true
+  <testcase name="runTest[model.TestCase@1d3ac898](1)" classname="test.ApiTest" time="5.421">
+    <failure message="USER04 | Expected: 200 | Actual: 404 | ErrorType: assertion_error" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: USER04 | Expected: 200 | Actual: 404 | ErrorType: assertion_error
+	at test.ApiTest.runTest(ApiTest.java:148)
+]]></failure>
+    <system-out><![CDATA[USER04 | Expected: 200 | Actual: 404 | Passed: false
 ]]></system-out>
     <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 ]]></system-err>
-  </testcase>
-  <testcase name="runTest[model.TestCase@627ff1b8](2)" classname="test.ApiTest" time="1.534">
-    <system-out><![CDATA[USER02 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@7c1a8f0f](3)" classname="test.ApiTest" time="1.432">
-    <system-out><![CDATA[USER03 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@33f2cfda](4)" classname="test.ApiTest" time="1.337">
-    <system-out><![CDATA[USER04 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@776015fc](5)" classname="test.ApiTest" time="1.375">
-    <system-out><![CDATA[USER05 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@7f3ca64a](6)" classname="test.ApiTest" time="1.346">
-    <system-out><![CDATA[USER06 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@5d5c41e5](7)" classname="test.ApiTest" time="1.4">
-    <system-out><![CDATA[USER07 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@2eada095](8)" classname="test.ApiTest" time="1.387">
-    <system-out><![CDATA[USER08 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@443a53df](9)" classname="test.ApiTest" time="1.372">
-    <system-out><![CDATA[USER09 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@49fdbe2b](10)" classname="test.ApiTest" time="1.393">
-    <system-out><![CDATA[USER10 | Expected: 200 | Actual: 200 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@2dd1086](11)" classname="test.ApiTest" time="1.322">
-    <system-out><![CDATA[USER11 | Expected: 404 | Actual: 404 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@3830f918](12)" classname="test.ApiTest" time="1.367">
-    <system-out><![CDATA[USER12 | Expected: 404 | Actual: 404 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@60bf494c](13)" classname="test.ApiTest" time="1.582">
-    <failure message="USER13 | Expected: 404 | Actual: 405 | ErrorType: invalid_test_data" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: USER13 | Expected: 404 | Actual: 405 | ErrorType: invalid_test_data
-	at test.ApiTest.runTest(ApiTest.java:148)
-]]></failure>
-    <system-out><![CDATA[USER13 | Expected: 404 | Actual: 405 | Passed: false
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@2313db84](14)" classname="test.ApiTest" time="1.36">
-    <system-out><![CDATA[USER14 | Expected: 415 | Actual: 415 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@132e3594](15)" classname="test.ApiTest" time="1.381">
-    <system-out><![CDATA[USER15 | Expected: 415 | Actual: 415 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@78d73b1b](16)" classname="test.ApiTest" time="1.369">
-    <failure message="USER16 | Expected: 400 | Actual: 200 | ErrorType: assertion_error" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: USER16 | Expected: 400 | Actual: 200 | ErrorType: assertion_error
-	at test.ApiTest.runTest(ApiTest.java:148)
-]]></failure>
-    <system-out><![CDATA[USER16 | Expected: 400 | Actual: 200 | Passed: false
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@5fb54740](17)" classname="test.ApiTest" time="2.157">
-    <system-out><![CDATA[USER17 | Expected: 400 | Actual: 400 | Passed: true
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@c9b5a99](18)" classname="test.ApiTest" time="1.339">
-    <failure message="USER18 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: USER18 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data
-	at test.ApiTest.runTest(ApiTest.java:148)
-]]></failure>
-    <system-out><![CDATA[USER18 | Expected: 400 | Actual: 404 | Passed: false
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@9785903](19)" classname="test.ApiTest" time="1.435">
-    <failure message="USER19 | Expected: 400 | Actual: 405 | ErrorType: invalid_test_data" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: USER19 | Expected: 400 | Actual: 405 | ErrorType: invalid_test_data
-	at test.ApiTest.runTest(ApiTest.java:148)
-]]></failure>
-    <system-out><![CDATA[USER19 | Expected: 400 | Actual: 405 | Passed: false
-]]></system-out>
-  </testcase>
-  <testcase name="runTest[model.TestCase@2c47a053](20)" classname="test.ApiTest" time="1.85">
-    <failure message="USER20 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: USER20 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data
-	at test.ApiTest.runTest(ApiTest.java:148)
-]]></failure>
-    <system-out><![CDATA[USER20 | Expected: 400 | Actual: 404 | Passed: false
-]]></system-out>
   </testcase>
 </testsuite>

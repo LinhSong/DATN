@@ -1,24 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.ApiTest
 -------------------------------------------------------------------------------
-Tests run: 20, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 34.086 s <<< FAILURE! - in test.ApiTest
-test.ApiTest.runTest[model.TestCase@60bf494c](13)  Time elapsed: 1.582 s  <<< FAILURE!
-java.lang.AssertionError: USER13 | Expected: 404 | Actual: 405 | ErrorType: invalid_test_data
-	at test.ApiTest.runTest(ApiTest.java:148)
-
-test.ApiTest.runTest[model.TestCase@78d73b1b](16)  Time elapsed: 1.369 s  <<< FAILURE!
-java.lang.AssertionError: USER16 | Expected: 400 | Actual: 200 | ErrorType: assertion_error
-	at test.ApiTest.runTest(ApiTest.java:148)
-
-test.ApiTest.runTest[model.TestCase@c9b5a99](18)  Time elapsed: 1.339 s  <<< FAILURE!
-java.lang.AssertionError: USER18 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data
-	at test.ApiTest.runTest(ApiTest.java:148)
-
-test.ApiTest.runTest[model.TestCase@9785903](19)  Time elapsed: 1.435 s  <<< FAILURE!
-java.lang.AssertionError: USER19 | Expected: 400 | Actual: 405 | ErrorType: invalid_test_data
-	at test.ApiTest.runTest(ApiTest.java:148)
-
-test.ApiTest.runTest[model.TestCase@2c47a053](20)  Time elapsed: 1.85 s  <<< FAILURE!
-java.lang.AssertionError: USER20 | Expected: 400 | Actual: 404 | ErrorType: invalid_test_data
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.862 s <<< FAILURE! - in test.ApiTest
+test.ApiTest.runTest[model.TestCase@1d3ac898](1)  Time elapsed: 5.421 s  <<< FAILURE!
+java.lang.AssertionError: USER04 | Expected: 200 | Actual: 404 | ErrorType: assertion_error
 	at test.ApiTest.runTest(ApiTest.java:148)
 

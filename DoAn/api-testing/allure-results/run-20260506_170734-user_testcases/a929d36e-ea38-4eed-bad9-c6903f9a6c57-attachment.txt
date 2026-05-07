@@ -1,1 +1,0 @@
-{id=2, username=edge_user, firstName=A, lastName=B, email=a@b.com, password=pass, phone=111, userStatus=1}

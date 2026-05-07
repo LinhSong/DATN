@@ -1,1 +1,0 @@
-{id=3, username=long_username_1234567890, firstName=Test, lastName=User, email=long@example.com, password=password, phone=123456789012345, userStatus=1}

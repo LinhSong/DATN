@@ -1,3 +1,0 @@
-<apiResponse>
-  <type>unknown</type>
-</apiResponse>
