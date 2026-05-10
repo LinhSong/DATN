@@ -1,0 +1,614 @@
+[
+  {
+    "id": "PET01",
+    "method": "GET",
+    "endpoint": "/pet/10101",
+    "pathParams": {
+      "petId": 1
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get existing pet by valid ID",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET02",
+    "method": "GET",
+    "endpoint": "/pet/999999999",
+    "pathParams": {
+      "petId": 999999999
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "NOT_FOUND",
+    "description": "Get non-existing pet with large ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET03",
+    "method": "GET",
+    "endpoint": "/pet/-1",
+    "pathParams": {
+      "petId": -1
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ID",
+    "description": "Get pet using negative ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET04",
+    "method": "GET",
+    "endpoint": "/pet/abc",
+    "pathParams": {
+      "petId": "abc"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 400,
+    "error_type": "INVALID_TYPE",
+    "description": "Get pet using string instead of numeric ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET05",
+    "method": "GET",
+    "endpoint": "/pet/0",
+    "pathParams": {
+      "petId": 0
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "NOT_FOUND",
+    "description": "Get pet using boundary ID value 0",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET06",
+    "method": "GET",
+    "endpoint": "/pet/9223372036854775807",
+    "pathParams": {
+      "petId": 9223372036854775807
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "BOUNDARY_OVERFLOW",
+    "description": "Get pet using maximum 64-bit integer ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "PET07",
+    "method": "GET",
+    "endpoint": "/pet/10101",
+    "pathParams": {
+      "petId": 1
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get pet without Accept header",
+    "labels": {
+      "validity": "valid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET08",
+    "method": "GET",
+    "endpoint": "/pet-invalid/1",
+    "pathParams": {
+      "petId": 1
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ENDPOINT",
+    "description": "Call invalid GET endpoint",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET09",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 10101,
+      "name": "Golden Retriever",
+      "status": "available",
+      "category": {
+        "id": 1,
+        "name": "Dogs"
+      },
+      "photoUrls": [
+        "https://example.com/dog.jpg"
+      ],
+      "tags": [
+        {
+          "id": 1,
+          "name": "friendly"
+        }
+      ]
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Create pet with complete valid payload",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "PET10",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 10102,
+      "name": "Cat"
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Create pet with minimal payload",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET11",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {},
+    "expected_status": 200,
+    "error_type": "EMPTY_BODY",
+    "description": "Create pet with empty request body",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "PET12",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "abc",
+      "name": 12345,
+      "status": true
+    },
+    "expected_status": 400,
+    "error_type": "INVALID_DATA_TYPE",
+    "description": "Create pet with wrong field data types",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "PET13",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {},
+    "body": {
+      "id": 10103,
+      "name": "NoHeaderPet"
+    },
+    "expected_status": 415,
+    "error_type": "MISSING_CONTENT_TYPE",
+    "description": "Create pet without Content-Type header",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET14",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "text/plain"
+    },
+    "body": {
+      "id": 10104,
+      "name": "WrongHeaderPet"
+    },
+    "expected_status": 415,
+    "error_type": "UNSUPPORTED_MEDIA_TYPE",
+    "description": "Create pet using invalid Content-Type header",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET15",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": -999,
+      "name": "NegativePet"
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Create pet using negative ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET16",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 10105,
+      "name": "",
+      "status": "available"
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Create pet with empty name string",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET17",
+    "method": "POST",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 10106,
+      "name": "VeryLargePayloadPet",
+      "photoUrls": [
+        "https://example.com/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.jpg"
+      ]
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Create pet with oversized string field",
+    "labels": {
+      "validity": "valid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET18",
+    "method": "POST",
+    "endpoint": "/pet-invalid",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 10107,
+      "name": "InvalidEndpointPet"
+    },
+    "expected_status": 404,
+    "error_type": "INVALID_ENDPOINT",
+    "description": "Call invalid POST endpoint",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET19",
+    "method": "PUT",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 10101,
+      "name": "Updated Retriever",
+      "status": "sold"
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Update existing pet with valid payload",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "PET20",
+    "method": "PUT",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {},
+    "expected_status": 200,
+    "error_type": "EMPTY_BODY",
+    "description": "Update pet with empty body",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "PET21",
+    "method": "PUT",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "wrong-type",
+      "name": true
+    },
+    "expected_status": 400,
+    "error_type": "INVALID_DATA_TYPE",
+    "description": "Update pet using invalid data types",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "PET22",
+    "method": "PUT",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {},
+    "body": {
+      "id": 10101,
+      "name": "NoHeaderUpdate"
+    },
+    "expected_status": 415,
+    "error_type": "MISSING_CONTENT_TYPE",
+    "description": "Update pet without Content-Type header",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET23",
+    "method": "PUT",
+    "endpoint": "/pet",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 999999999,
+      "name": "UnknownPet"
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Update non-existing pet ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET24",
+    "method": "PUT",
+    "endpoint": "/pet-invalid",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 10101,
+      "name": "InvalidEndpointUpdate"
+    },
+    "expected_status": 404,
+    "error_type": "INVALID_ENDPOINT",
+    "description": "Call invalid PUT endpoint",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET25",
+    "method": "DELETE",
+    "endpoint": "/pet/10101",
+    "pathParams": {
+      "petId": 10101
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Delete existing pet",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "PET26",
+    "method": "DELETE",
+    "endpoint": "/pet/999999999",
+    "pathParams": {
+      "petId": 999999999
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": "NOT_FOUND",
+    "description": "Delete non-existing pet",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET27",
+    "method": "DELETE",
+    "endpoint": "/pet/abc",
+    "pathParams": {
+      "petId": "abc"
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 400,
+    "error_type": "INVALID_TYPE",
+    "description": "Delete pet using string ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET28",
+    "method": "DELETE",
+    "endpoint": "/pet/-100",
+    "pathParams": {
+      "petId": -100
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ID",
+    "description": "Delete pet using negative ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET29",
+    "method": "DELETE",
+    "endpoint": "/pet/0",
+    "pathParams": {
+      "petId": 0
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "BOUNDARY_VALUE",
+    "description": "Delete pet using boundary ID value 0",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET30",
+    "method": "DELETE",
+    "endpoint": "/pet-invalid/1",
+    "pathParams": {
+      "petId": 1
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ENDPOINT",
+    "description": "Call invalid DELETE endpoint",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "low"
+    }
+  }
+]

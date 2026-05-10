@@ -3,261 +3,712 @@ import subprocess
 import json
 import os
 import tempfile
+import pandas as pd
+
 from datetime import datetime
-import random
 
-st.set_page_config(page_title="API Testing Tool", layout="wide")
+# =========================================================
+# CONFIG
+# =========================================================
 
-st.title("🚀 API Testing Framework UI")
-
-# ================= SESSION =================
-if "results" not in st.session_state:
-    st.session_state.results = None
-if "run_dir" not in st.session_state:
-    st.session_state.run_dir = None
-if "json_data" not in st.session_state:
-    st.session_state.json_data = ""
-if "file_name" not in st.session_state:
-    st.session_state.file_name = "custom"
-if "last_input_mode" not in st.session_state:
-    st.session_state.last_input_mode = None
-if "last_selected_file" not in st.session_state:
-    st.session_state.last_selected_file = None
-
-# ================= INPUT =================
-st.header("1. Nhập dữ liệu Test Case")
-
-input_mode = st.radio(
-    "Chọn cách nhập",
-    ["📄 Dán JSON", "📁 Upload file", "📂 Chọn file có sẵn"],
-    key="input_mode"
+st.set_page_config(
+    page_title="API Testing Tool",
+    layout="wide"
 )
 
-# ===== detect change input mode =====
-if st.session_state.last_input_mode != input_mode:
-    st.session_state.last_input_mode = input_mode
+st.title(" API Testing Framework UI")
 
-    # ================= RESET TOÀN BỘ =================
-    st.session_state.results = None
-    st.session_state.run_dir = None
-    st.session_state.json_data = ""
-    st.session_state.file_name = "custom"
-    st.session_state.last_selected_file = None
+# =========================================================
+# SESSION STATE
+# =========================================================
 
-    # reset file uploader cache (quan trọng)
-    if "selected_file" in st.session_state:
-        del st.session_state["selected_file"]
+default_states = {
+    "results": None,
+    "run_dir": None,
 
-    st.rerun()
-# ===== HANDLE INPUT =====
-if input_mode == "📄 Dán JSON":
-    st.session_state.json_data = st.text_area(
-        "Paste JSON",
-        value=st.session_state.json_data,
-        height=300,
-        placeholder='''[
-    {
-        "id": "PET01",
-        "method": "GET",
-        "endpoint": "/pet/1",
-        "pathParams": {
-        "petId": 1
-        },
-        "headers": {},
-        "body": {},
-        "expected_status": 200,
-        "is_valid_testcase": true,
-        "error_type": null,
-        "description": "Get existing pet with valid ID"
-    }
-    ]'''
-    )
-    # ================= REALTIME VALIDATION =================
-    if st.session_state.json_data.strip():
+    # TAB1
+    "json_data_tab1": "",
+    "file_name_tab1": "custom",
 
-        try:
-            parsed = json.loads(st.session_state.json_data)
+    # TAB2
+    "json_data_tab2": "",
+    "file_name_tab2": "custom",
 
-            # ✅ hợp lệ → preview
-            st.success("JSON hợp lệ")
+    "save_tc_tab1": False,
+    "save_tc_tab2": False,
 
-            with st.container(height=200):
-                st.json(parsed)
+    "url_history": [],
 
-        except Exception as e:
-            st.error(f"❌ JSON lỗi: {e}")
+    "last_input_mode_old": ""
+}
 
-    # ================= LINE NUMBER =================
-    if st.session_state.json_data:
-        lines = st.session_state.json_data.split("\n")
-        numbered = "\n".join(f"{i} {line}" for i, line in enumerate(lines, 1))
+for key, value in default_states.items():
+    if key not in st.session_state:
+        st.session_state[key] = value
 
-        st.code(numbered, language="json")
+# =========================================================
+# UTILS
+# =========================================================
 
-elif input_mode == "📁 Upload file":
-    uploaded = st.file_uploader("Upload JSON", type=["json"])
-    if uploaded:
-        st.session_state.json_data = uploaded.read().decode("utf-8")
-        st.session_state.file_name = uploaded.name.replace(".json", "")
+def extract_group_from_url(url):
 
-elif input_mode == "📂 Chọn file có sẵn":
-    if os.path.exists("testcases"):
-        files = [f for f in os.listdir("testcases") if f.endswith(".json")]
-
-        selected = st.selectbox(
-            "Chọn file",
-            files,
-            key="selected_file"
+    try:
+        return (
+            url
+            .replace("https://", "")
+            .replace("http://", "")
+            .split("/")[0]
+            .replace(".", "_")
         )
 
-        # ===== detect change file =====
-        if st.session_state.last_selected_file != selected:
-            st.session_state.last_selected_file = selected
-
-            if selected:
-                with open(f"testcases/{selected}") as f:
-                    st.session_state.json_data = f.read()
-                st.session_state.file_name = selected.replace(".json", "")
-
-            # ✅ RESET KẾT QUẢ
-            st.session_state.results = None
-            st.session_state.run_dir = None
-
-            st.rerun()
-
-# ================= PREVIEW =================
-if st.session_state.json_data:
-    try:
-        parsed = json.loads(st.session_state.json_data)
-        with st.container(height=300):
-            st.json(parsed)
     except:
-        st.error("JSON lỗi")
+        return "default_group"
 
-# ================= RUN =================
-st.header("2. Chạy Test")
 
-if st.button("▶️ Run Test"):
+def validate_testcase_structure(data):
 
-    if not st.session_state.json_data:
-        st.error("Chưa có data")
+    required_fields = [
+        "id",
+        "method",
+        "endpoint",
+        "expected_status"
+    ]
 
-    else:
+    if not isinstance(data, list):
+        return False, "JSON phải là ARRAY"
 
-        # ===== VALIDATE JSON =====
+    for index, tc in enumerate(data):
+
+        for field in required_fields:
+
+            if field not in tc:
+                return False, f"Test case {index + 1} thiếu field: {field}"
+
+    return True, "OK"
+
+# =========================================================
+# INPUT
+# =========================================================
+
+st.header("1. Nhập dữ liệu Test Case")
+
+tab1, tab2 = st.tabs([
+    "🆕 URL mới",
+    "📂 URL đã chạy"
+])
+
+
+active_base_url = ""
+selected_group = None
+
+# =========================================================
+# TAB 1
+# =========================================================
+
+with tab1:
+    st.subheader("🌐 API mới")
+
+    base_url_new = st.text_input(
+        "Base URL",
+        key="base_url_new",
+        placeholder="https://api.example.com"
+    )
+
+    input_mode_new = st.radio(
+        "Chọn cách nhập Test Case",
+        ["📄 Dán JSON", "📁 Upload file"],
+        key="input_mode_new"
+    )
+
+    json_data_new = None
+    file_name_new = "custom"
+
+    # ================= PASTE =================
+    if input_mode_new == "📄 Dán JSON":
+
+        json_data_new = st.text_area(
+            "Paste JSON",
+            height=300,
+            key="paste_new"
+        )
+
+        if json_data_new:
+            file_name_new = f"paste_{datetime.now().strftime('%H%M%S')}"
+
+    # ================= UPLOAD =================
+    elif input_mode_new == "📁 Upload file":
+
+        uploaded = st.file_uploader(
+            "Upload JSON",
+            type=["json"],
+            key="upload_new"
+        )
+
+        if uploaded:
+            json_data_new = uploaded.read().decode("utf-8")
+            file_name_new = uploaded.name.replace(".json", "")
+
+    # =====================================================
+    # SAVE OPTION
+    # =====================================================
+    save_tc_tab1 = st.checkbox(
+        "💾 Lưu test case (tự tạo nhóm theo URL)",
+        key="save_tc_tab1"
+    )
+
+    # =====================================================
+    # PREVIEW (IMPORTANT FIX)
+    # =====================================================
+    if st.session_state.json_data_tab1:
+
+        st.subheader("📄 Preview")
+
         try:
-            json.loads(st.session_state.json_data)
+            parsed = json.loads(st.session_state.json_data_tab1)
+
+            with st.container(height=350, border=True):
+                st.json(parsed)
 
         except Exception as e:
             st.error(f"JSON lỗi: {e}")
 
-        else:
+# =========================================================
+# UPDATE SESSION STATE (FIXED SAFE WAY)
+# =========================================================
+if json_data_new:
+    st.session_state.json_data_tab1 = json_data_new
+    st.session_state.file_name_tab1 = file_name_new
+# =========================================================
+# TAB 2
+# =========================================================
 
-            with st.spinner("Running..."):
+with tab2:
+    st.subheader("📂 API đã chạy")
 
-                # ===== TEMP FILE =====
-                tmp = tempfile.NamedTemporaryFile(
-                    delete=False,
-                    suffix=".json"
+    base_url_old = st.text_input(
+        "Base URL",
+        key="base_url_old",
+        placeholder="https://api.example.com"
+    )
+
+    testcase_root = "testcases"
+
+    # ================= GROUP =================
+
+    selected_group = None
+
+    if os.path.exists(testcase_root):
+
+        groups = [
+            d for d in os.listdir(testcase_root)
+            if os.path.isdir(os.path.join(testcase_root, d))
+        ]
+
+        if groups:
+
+            selected_group = st.selectbox(
+                "Chọn nhóm Testcase",
+                groups
+            )
+
+    # ================= INPUT MODE =================
+
+    input_mode_old = st.radio(
+        "Chọn cách nhập Test Case",
+        [
+            "📄 Dán JSON",
+            "📁 Upload file",
+            "📂 Chọn file có sẵn"
+        ],
+        key="input_mode_old"
+    )
+
+    # ================= RESET WHEN CHANGE MODE =================
+
+    if st.session_state.last_input_mode_old != input_mode_old:
+        st.session_state.json_data_tab2 = ""
+        st.session_state.file_name_tab2 = "custom"
+
+    st.session_state.last_input_mode_old = input_mode_old
+
+    json_data_old = None
+    file_name_old = "custom"
+
+    # ================= SAVE OPTION =================
+
+    save_tc_tab2 = False
+
+    if input_mode_old in ["📄 Dán JSON", "📁 Upload file"]:
+
+        save_tc_tab2 = st.checkbox(
+            "💾 Lưu test case vào nhóm",
+            key="save_tc_tab2"
+        )
+
+    # ================= PASTE =================
+
+    if input_mode_old == "📄 Dán JSON":
+
+        json_data_old = st.text_area(
+            "Paste JSON",
+            height=300,
+            key="paste_old"
+        )
+
+        file_name_old = f"paste_{datetime.now().strftime('%H%M%S')}"
+
+    # ================= UPLOAD =================
+
+    elif input_mode_old == "📁 Upload file":
+
+        uploaded_old = st.file_uploader(
+            "Upload JSON",
+            type=["json"],
+            key="upload_old"
+        )
+
+        if uploaded_old:
+            json_data_old = uploaded_old.read().decode("utf-8")
+            file_name_old = uploaded_old.name.replace(".json", "")
+
+    # ================= EXISTING FILE =================
+
+    elif input_mode_old == "📂 Chọn file có sẵn":
+
+        if selected_group:
+
+            group_path = os.path.join(testcase_root, selected_group)
+
+            files = [
+                f for f in os.listdir(group_path)
+                if f.endswith(".json")
+            ]
+
+            if files:
+
+                selected_file = st.selectbox(
+                    "Chọn file",
+                    files,
+                    key="selected_tc_file"
                 )
 
-                tmp.write(st.session_state.json_data.encode())
-                tmp.close()
+                if selected_file:
 
-                # ===== TẠO RUN DIR =====
-                time_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    full_path = os.path.join(group_path, selected_file)
 
-                run_dir = os.path.abspath(
-                    f"allure-results/run-{time_str}-{st.session_state.file_name}"
-                )
+                    with open(full_path, "r", encoding="utf-8") as f:
+                        content = f.read()
 
-                os.makedirs(run_dir, exist_ok=True)
+                    # ✔ IMPORTANT: update session_state NGAY khi chọn file
+                    st.session_state.json_data_tab2 = content
+                    st.session_state.file_name_tab2 = selected_file.replace(".json", "")
 
-                # ===== ENV ALLURE =====
-                env = os.environ.copy()
-                env["ALLURE_RESULTS_DIRECTORY"] = run_dir
+    # ================= UPDATE SESSION (ONLY WHEN INPUT EXISTS) =================
 
-                cmd = (
-                    f'mvn clean test '
-                    f'-q '
-                    f'-Dsurefire.printSummary=false '
-                    f'-Dfile="{tmp.name}" '
-                    f'-Dallure.results.directory="{run_dir}"'
-                )
+    if json_data_old:
+        st.session_state.json_data_tab2 = json_data_old
+        st.session_state.file_name_tab2 = file_name_old
 
-                subprocess.run(
-                    cmd,
-                    shell=True,
-                    capture_output=True,
-                    text=True,
-                    env=env
-                )
+    # ================= PREVIEW =================
 
-                st.success(
-                    f"📁 Saved: allure-results\\{os.path.basename(run_dir)}"
-                )
+    if st.session_state.json_data_tab2:
 
-                # ===== LOAD RESULT =====
-                if os.path.exists("output/result.json"):
+        st.subheader("📄 Preview")
 
-                    with open("output/result.json") as f:
-                        results = json.load(f)
+        try:
+            parsed = json.loads(st.session_state.json_data_tab2)
 
-                    st.session_state.results = results
-                    st.session_state.run_dir = run_dir
-# ================= RESULT =================
+            with st.container(height=350, border=True):
+                st.json(parsed)
+
+        except Exception as e:
+            st.error(f"JSON lỗi: {e}")
+# =========================================================
+# RUN TEST
+# =========================================================
+
+st.header("3. Chạy Test")
+
+run_source = st.radio(
+    "Chạy dữ liệu từ",
+    ["🆕 Tab URL mới", "📂 Tab URL đã chạy"],
+    horizontal=True
+)
+
+if st.button("▶️ Run Test"):
+
+    if run_source == "🆕 Tab URL mới":
+        current_data = st.session_state.json_data_tab1
+        current_file = st.session_state.file_name_tab1
+        current_base_url = st.session_state.get("base_url_new", "")
+
+    else:
+        current_data = st.session_state.json_data_tab2
+        current_file = st.session_state.file_name_tab2
+        current_base_url = st.session_state.get("base_url_old", "")
+
+    # =====================================================
+    # VALIDATE INPUT
+    # =====================================================
+
+    if not current_data:
+
+        st.error("❌ Chưa có dữ liệu test case")
+        st.stop()
+
+    elif not current_base_url:
+
+        st.error("❌ Vui lòng nhập Base URL")
+        st.stop()
+
+    # =====================================================
+    # VALIDATE JSON
+    # =====================================================
+
+    try:
+
+        parsed_json = json.loads(current_data)
+
+    except Exception as e:
+
+        st.error(f"JSON lỗi: {e}")
+        st.stop()
+
+    valid, message = validate_testcase_structure(
+        parsed_json
+    )
+
+    if not valid:
+
+        st.error(message)
+        st.stop()
+
+    # =====================================================
+    # RUN TEST
+    # =====================================================
+
+    with st.spinner("Running API Test..."):
+
+        # =================================================
+        # DELETE OLD RESULT
+        # =================================================
+
+        if os.path.exists("output/result.json"):
+
+            os.remove("output/result.json")
+
+        # =================================================
+        # TEMP FILE
+        # =================================================
+
+        tmp = tempfile.NamedTemporaryFile(
+            delete=False,
+            suffix=".json"
+        )
+
+        tmp.write(
+            current_data.encode("utf-8")
+        )
+
+        tmp.close()
+
+        # =================================================
+        # RUN DIR
+        # =================================================
+
+        time_str = datetime.now().strftime(
+            "%Y%m%d_%H%M%S"
+        )
+
+        run_dir = os.path.abspath(
+            f"allure-results/run-{time_str}-{current_file}"
+        )
+
+        os.makedirs(
+            run_dir,
+            exist_ok=True
+        )
+
+        # =================================================
+        # ENV
+        # =================================================
+
+        env = os.environ.copy()
+
+        env["ALLURE_RESULTS_DIRECTORY"] = run_dir
+
+        # =================================================
+        # MAVEN COMMAND
+        # =================================================
+
+        cmd = (
+
+            f'mvn clean test '
+
+            f'-q '
+
+            f'-Dsurefire.printSummary=false '
+
+            f'-Dfile="{tmp.name}" '
+
+            f'-DbaseUrl="{current_base_url}" '
+
+            f'-Dallure.results.directory="{run_dir}"'
+        )
+
+        process = subprocess.run(
+            cmd,
+            shell=True,
+            capture_output=True,
+            text=True,
+            env=env
+        )
+
+        # =================================================
+        # MAVEN OUTPUT
+        # =================================================
+
+        if (
+            process.stderr
+            and "SLF4J" not in process.stderr
+        ):
+
+            st.warning(process.stderr)
+
+        # =================================================
+        # CHECK RESULT
+        # =================================================
+
+        if not os.path.exists("output/result.json"):
+
+            st.error("❌ Không tạo được result.json")
+
+            st.code(process.stdout)
+            st.code(process.stderr)
+
+            st.stop()
+
+        st.success(
+            f"✅ Saved: allure-results\\{os.path.basename(run_dir)}"
+        )
+
+        # =================================================
+        # LOAD RESULT
+        # =================================================
+
+        with open(
+            "output/result.json",
+            "r",
+            encoding="utf-8"
+        ) as f:
+
+            results = json.load(f)
+
+        st.session_state.results = results
+        st.session_state.run_dir = run_dir
+
+        # =================================================
+        # SAVE TESTCASE TAB1
+        # =================================================
+
+        if (
+            st.session_state.active_tab == "tab1"
+            and save_tc_tab1
+        ):
+
+            group_name = extract_group_from_url(
+                current_base_url
+            )
+
+            tc_dir = os.path.join(
+                "testcases",
+                group_name
+            )
+
+            os.makedirs(
+                tc_dir,
+                exist_ok=True
+            )
+
+            auto_name = (
+                f"tc_{datetime.now().strftime('%H%M%S')}.json"
+            )
+
+            with open(
+                os.path.join(tc_dir, auto_name),
+                "w",
+                encoding="utf-8"
+            ) as f:
+
+                f.write(current_data)
+
+        # =================================================
+        # SAVE TESTCASE TAB2
+        # =================================================
+
+        if (
+            st.session_state.active_tab == "tab2"
+            and st.session_state.save_tc_tab2
+            and selected_group
+        ):
+
+            tc_dir = os.path.join(
+                "testcases",
+                selected_group
+            )
+
+            os.makedirs(
+                tc_dir,
+                exist_ok=True
+            )
+
+            auto_name = (
+                f"tc_{datetime.now().strftime('%H%M%S')}.json"
+            )
+
+            with open(
+                os.path.join(tc_dir, auto_name),
+                "w",
+                encoding="utf-8"
+            ) as f:
+
+                f.write(current_data)
+
+# =========================================================
+# RESULT
+# =========================================================
+
 if st.session_state.results:
 
     results = st.session_state.results
 
-    st.subheader("📊 Kết quả")
+    st.header("4. Kết quả")
 
     total = len(results)
-    passed = sum(1 for r in results if r["passed"])
+
+    passed = sum(
+        1 for r in results
+        if r.get("passed")
+    )
+
     failed = total - passed
-    pass_rate = round((passed / total) * 100, 2) if total > 0 else 0
+
+    pass_rate = (
+        round((passed / total) * 100, 2)
+        if total > 0
+        else 0
+    )
+
+    # =====================================================
+    # METRICS
+    # =====================================================
 
     col1, col2, col3, col4 = st.columns(4)
+
     col1.metric("Total", total)
     col2.metric("Passed", passed)
     col3.metric("Failed", failed)
-    col4.metric("Pass %", f"{pass_rate}%")
+    col4.metric("Pass Rate", f"{pass_rate}%")
 
-    st.dataframe(results, width="stretch")
+    # =====================================================
+    # TABLE
+    # =====================================================
 
-    # ===== ERROR ANALYSIS =====
+    df = pd.DataFrame(results)
+
+    st.dataframe(
+        df,
+        use_container_width=True
+    )
+
+    # =====================================================
+    # ERROR ANALYSIS
+    # =====================================================
+
     st.subheader("📉 Phân loại lỗi")
 
     error_types = {
+
         "assertion_error": 0,
         "invalid_test_data": 0,
-        "runtime_error": 0
+        "runtime_error": 0,
+        "invalid_endpoint": 0
     }
 
     for r in results:
-        if not r["passed"]:
-            err = r.get("errorType", "unknown")
+
+        if not r.get("passed"):
+
+            err = r.get("errorType", "")
+
             if err in error_types:
                 error_types[err] += 1
 
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Assertion", error_types["assertion_error"])
-    col2.metric("Invalid Data", error_types["invalid_test_data"])
-    col3.metric("Runtime", error_types["runtime_error"])
+    c1, c2, c3, c4 = st.columns(4)
 
-# ================= ALLURE =================
-st.subheader("📈 Allure Report")
+    c1.metric(
+        "Assertion",
+        error_types["assertion_error"]
+    )
 
-# ===== CURRENT RUN =====
+    c2.metric(
+        "Invalid Data",
+        error_types["invalid_test_data"]
+    )
+
+    c3.metric(
+        "Runtime",
+        error_types["runtime_error"]
+    )
+
+    c4.metric(
+        "Invalid Endpoint",
+        error_types["invalid_endpoint"]
+    )
+
+    # =====================================================
+    # METHOD COVERAGE
+    # =====================================================
+
+    st.subheader("📌 API Coverage")
+
+    method_count = {}
+
+    for r in results:
+
+        method = r.get("method", "UNKNOWN")
+
+        method_count[method] = (
+            method_count.get(method, 0) + 1
+        )
+
+    cols = st.columns(len(method_count))
+
+    for index, (method, count) in enumerate(method_count.items()):
+
+        cols[index].metric(method, count)
+
+# =========================================================
+# ALLURE REPORT
+# =========================================================
+
+st.header("5. Allure Report")
+
+# =========================================================
+# CURRENT RUN
+# =========================================================
+
 if st.session_state.run_dir:
 
-    st.markdown("### 🚀 Current Run")
+    st.subheader("🚀 Current Run")
 
     st.code(st.session_state.run_dir)
 
     if st.button("🌐 Open Current Allure Report"):
 
-        abs_path = os.path.abspath(st.session_state.run_dir)
+        abs_path = os.path.abspath(
+            st.session_state.run_dir
+        )
 
         subprocess.Popen(
             f'allure serve "{abs_path}"',
@@ -265,18 +716,27 @@ if st.session_state.run_dir:
             cwd=os.getcwd()
         )
 
-# ===== HISTORY REPORTS =====
-st.markdown("### 📂 History Reports")
+# =========================================================
+# HISTORY
+# =========================================================
+
+st.subheader("📂 History Reports")
 
 allure_root = "allure-results"
 
 if os.path.exists(allure_root):
 
     folders = sorted(
+
         [
+
             f for f in os.listdir(allure_root)
-            if os.path.isdir(os.path.join(allure_root, f))
+
+            if os.path.isdir(
+                os.path.join(allure_root, f)
+            )
         ],
+
         reverse=True
     )
 
@@ -288,9 +748,15 @@ if os.path.exists(allure_root):
         )
 
         selected_path = os.path.abspath(
-            os.path.join(allure_root, selected_history)
+            os.path.join(
+                allure_root,
+                selected_history
+            )
         )
-        st.code(f"allure-results\\{selected_history}")
+
+        st.code(
+            f"allure-results\\{selected_history}"
+        )
 
         if st.button("📂 Open Selected Report"):
 
@@ -301,7 +767,9 @@ if os.path.exists(allure_root):
             )
 
     else:
+
         st.info("Chưa có report nào")
 
 else:
+
     st.info("Chưa có thư mục allure-results")

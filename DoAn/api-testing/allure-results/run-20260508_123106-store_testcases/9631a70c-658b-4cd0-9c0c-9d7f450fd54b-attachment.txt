@@ -1,0 +1,20 @@
+{
+    "sold": 173,
+    "new": 1,
+    "string": 145,
+    "Busy": 1,
+    "pending": 42,
+    "available": 607,
+    "avalible": 1,
+    "Not Available": 1,
+    "bold": 1,
+    "Avalable": 1,
+    "peric": 6,
+    "1": 1,
+    "SOLD": 1,
+    "{{$status}}": 3,
+    "{{status}}": 5,
+    "avaliable": 1,
+    "disponivel": 1,
+    "{{category}}": 1
+}

@@ -1,0 +1,10 @@
+===== ASSERTION ERRORS =====
+TC004 | Expected: 400 | Actual: 404
+
+===== INVALID DATA =====
+
+
+===== RUNTIME ERRORS =====
+
+
+===== INVALID ENDPOINT =====

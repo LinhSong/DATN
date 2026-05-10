@@ -3,6 +3,7 @@ package executor;
 import io.qameta.allure.Allure;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import model.TestCase;
 import model.TestResult;
 
@@ -10,21 +11,29 @@ import java.util.Map;
 
 public class ApiExecutor {
 
-    private static final String BASE_URL = "https://petstore.swagger.io/v2";
-
     public static TestResult execute(TestCase tc) {
 
+        String BASE_URL = System.getProperty("baseUrl");
+
+        if (BASE_URL == null || BASE_URL.isEmpty()) {
+            throw new RuntimeException("Missing -DbaseUrl parameter");
+        }
+
         TestResult result = new TestResult();
+
         result.id = tc.id;
         result.expectedStatus = tc.expectedStatus;
 
         try {
 
-            // ===== BUILD ENDPOINT =====
             String endpoint = tc.endpoint;
 
-            if (tc.pathParams != null && !tc.pathParams.isEmpty()) {
-                for (Map.Entry<String, Object> entry : tc.pathParams.entrySet()) {
+            // ===== REPLACE PATH PARAMS =====
+            if (tc.pathParams != null) {
+
+                for (Map.Entry<String, Object> entry
+                        : tc.pathParams.entrySet()) {
+
                     endpoint = endpoint.replace(
                             "{" + entry.getKey() + "}",
                             String.valueOf(entry.getValue())
@@ -32,59 +41,103 @@ public class ApiExecutor {
                 }
             }
 
-            Allure.step("Request: " + tc.method + " " + endpoint);
+            Allure.step(
+                    "Request: " +
+                            tc.method +
+                            " " +
+                            endpoint
+            );
 
-            // ===== PREPARE PAYLOAD =====
-            String payload = (tc.body != null) ? tc.body.toString() : "";
+            String payload =
+                    (tc.body != null)
+                            ? tc.body.toString()
+                            : "";
 
             Response response;
 
-            // ===== HANDLE CONTENT-TYPE =====
-            if (tc.headers != null &&
-                "application/x-www-form-urlencoded".equalsIgnoreCase(
-                        String.valueOf(tc.headers.get("Content-Type")))) {
+            // ===== HANDLE FORM DATA =====
+            if (tc.headers != null
+                    && tc.headers.containsKey("Content-Type")
+                    && tc.headers.get("Content-Type")
+                    .equalsIgnoreCase(
+                    "application/x-www-form-urlencoded")) {
 
-                // ===== FORM DATA =====
-                if (tc.body instanceof Map) {
-                    response = RestAssured
-                            .given()
-                            .baseUri(BASE_URL)
-                            .headers(tc.headers)
-                            .body(tc.body)
-                            .when()
-                            .request(tc.method, endpoint);
-                } else {
-                    // ❗ body không phải map → gửi raw
-                    response = RestAssured
-                            .given()
-                            .baseUri(BASE_URL)
-                            .headers(tc.headers)
-                            .body(payload)
-                            .when()
-                            .request(tc.method, endpoint);
+                RequestSpecification request =
+                        RestAssured
+                                .given()
+                                .baseUri(BASE_URL);
+
+                // HEADERS
+                if (tc.headers != null) {
+                    request.headers(tc.headers);
                 }
 
-            } else {
-
-                // ===== JSON =====
+                // FORM PARAMS
                 if (tc.body instanceof Map) {
-                    response = RestAssured
-                            .given()
-                            .baseUri(BASE_URL)
-                            .headers(tc.headers)
-                            .body(tc.body)
-                            .when()
-                            .request(tc.method, endpoint);
-                } else {
-                    // ❗ body là string (invalid test)
-                    response = RestAssured
-                            .given()
-                            .baseUri(BASE_URL)
-                            .headers(tc.headers)
-                            .body(payload)
-                            .when()
-                            .request(tc.method, endpoint);
+
+                    request.formParams(
+                            (Map<String, ?>) tc.body
+                    );
+
+                } else if (tc.body != null) {
+
+                    request.body(payload);
                 }
+                System.out.println("BASE URL: " + BASE_URL);
+                System.out.println("ENDPOINT: " + endpoint);
+                System.out.println("FULL URL: " + BASE_URL + endpoint);
+                response = request
+                        .when()
+                        .request(tc.method, endpoint);
+
+            }
+
+            // ===== NORMAL JSON =====
+            else {
+
+                RequestSpecification request =
+                        RestAssured
+                                .given()
+                                .baseUri(BASE_URL);
+
+                // HEADERS
+                if (tc.headers != null) {
+                    request.headers(tc.headers);
+                }
+
+                // BODY
+                boolean allowBody =
+                        tc.method.equalsIgnoreCase("POST")
+                                || tc.method.equalsIgnoreCase("PUT")
+                                || tc.method.equalsIgnoreCase("PATCH");
+
+                if (allowBody && tc.body != null) {
+
+                String contentType = "";
+
+                if (tc.headers != null
+                        && tc.headers.containsKey("Content-Type")) {
+
+                        contentType = tc.headers.get("Content-Type");
+                }
+
+                // text/plain
+                if (contentType.equalsIgnoreCase("text/plain")) {
+
+                        request.body(tc.body.toString());
+
+                }
+
+                // json
+                else {
+
+                        request.body(tc.body);
+                }
+                }
+
+                response = request
+                        .when()
+                        .request(tc.method, endpoint);
             }
 
             int status = response.getStatusCode();
@@ -93,21 +146,46 @@ public class ApiExecutor {
             result.requestBody = payload;
             result.responseBody = response.asString();
             result.actualStatus = status;
-            result.passed = (status == result.expectedStatus);
 
-            // ===== ALLURE ATTACH =====
-            Allure.addAttachment("Request", payload);
-            Allure.addAttachment("Response", response.asString());
-            Allure.addAttachment("Response Pretty", response.asPrettyString());
-            Allure.addAttachment("Status Code", String.valueOf(status));
+            result.passed =
+                    (status == result.expectedStatus);
+
+            // ===== ALLURE =====
+            Allure.addAttachment(
+                    "Request",
+                    payload
+            );
+
+            Allure.addAttachment(
+                    "Response",
+                    response.asString()
+            );
+
+            Allure.addAttachment(
+                    "Response Pretty",
+                    response.asPrettyString()
+            );
+
+            Allure.addAttachment(
+                    "Status Code",
+                    String.valueOf(status)
+            );
 
         } catch (Exception e) {
 
+            e.printStackTrace();
+
             result.passed = false;
-            result.errorType = "runtime_error";
+
+            // runtime error
             result.actualStatus = 0;
 
-            Allure.addAttachment("ERROR", e.toString());
+            result.errorType = "runtime_error";
+
+            Allure.addAttachment(
+                    "ERROR",
+                    e.toString()
+            );
         }
 
         return result;

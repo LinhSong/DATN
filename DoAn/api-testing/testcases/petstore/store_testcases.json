@@ -1,0 +1,513 @@
+[
+  {
+    "id": "ORD01",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 5001,
+      "petId": 101,
+      "quantity": 1,
+      "shipDate": "2026-05-09T10:00:00.000Z",
+      "status": "placed",
+      "complete": true
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Place valid pet order with complete payload",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "ORD02",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 5002,
+      "petId": 102
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Place order with minimal payload",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD03",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {},
+    "expected_status": 400,
+    "error_type": "EMPTY_BODY",
+    "description": "Place order with empty request body",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "ORD04",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "invalid-id",
+      "petId": "abc",
+      "quantity": "five",
+      "complete": "true"
+    },
+    "expected_status": 400,
+    "error_type": "INVALID_DATA_TYPE",
+    "description": "Place order with wrong data types",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "ORD05",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {},
+    "body": {
+      "id": 5003,
+      "petId": 103
+    },
+    "expected_status": 415,
+    "error_type": "MISSING_CONTENT_TYPE",
+    "description": "Place order without Content-Type header",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD06",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "text/plain"
+    },
+    "body": {
+      "id": 5004,
+      "petId": 104
+    },
+    "expected_status": 415,
+    "error_type": "UNSUPPORTED_MEDIA_TYPE",
+    "description": "Place order with invalid Content-Type",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD07",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": -1,
+      "petId": -100,
+      "quantity": -5,
+      "status": "placed",
+      "complete": true
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Place order using negative numeric values",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD08",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 9223372036854775807,
+      "petId": 9223372036854775807,
+      "quantity": 2147483647,
+      "status": "approved",
+      "complete": false
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Place order with maximum boundary numeric values",
+    "labels": {
+      "validity": "valid",
+      "category": "edge",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "ORD09",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 5005,
+      "petId": 105,
+      "quantity": 0,
+      "status": "placed",
+      "complete": false
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Place order with quantity boundary value zero",
+    "labels": {
+      "validity": "valid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "ORD10",
+    "method": "POST",
+    "endpoint": "/store/order",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 5006,
+      "petId": 106,
+      "quantity": 1,
+      "shipDate": "invalid-date-format",
+      "status": "delivered",
+      "complete": true
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Place order with invalid ship date format",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD11",
+    "method": "POST",
+    "endpoint": "/store/order-invalid",
+    "pathParams": {},
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": 5007,
+      "petId": 107
+    },
+    "expected_status": 404,
+    "error_type": "INVALID_ENDPOINT",
+    "description": "Call invalid POST order endpoint",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "ORD12",
+    "method": "GET",
+    "endpoint": "/store/order/5001",
+    "pathParams": {
+      "orderId": 5001
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get existing order by valid ID",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD13",
+    "method": "GET",
+    "endpoint": "/store/order/999999999",
+    "pathParams": {
+      "orderId": 999999999
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "NOT_FOUND",
+    "description": "Get non-existing order by large ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD14",
+    "method": "GET",
+    "endpoint": "/store/order/-1",
+    "pathParams": {
+      "orderId": -1
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ID",
+    "description": "Get order using negative ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD15",
+    "method": "GET",
+    "endpoint": "/store/order/abc",
+    "pathParams": {
+      "orderId": "abc"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 400,
+    "error_type": "INVALID_TYPE",
+    "description": "Get order using string instead of numeric ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD16",
+    "method": "GET",
+    "endpoint": "/store/order/0",
+    "pathParams": {
+      "orderId": 0
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "BOUNDARY_VALUE",
+    "description": "Get order using boundary ID value zero",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "ORD17",
+    "method": "GET",
+    "endpoint": "/store/order/9223372036854775807",
+    "pathParams": {
+      "orderId": 9223372036854775807
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "BOUNDARY_OVERFLOW",
+    "description": "Get order using maximum 64-bit integer",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "ORD18",
+    "method": "GET",
+    "endpoint": "/store/order/5001",
+    "pathParams": {
+      "orderId": 5001
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get order without Accept header",
+    "labels": {
+      "validity": "valid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "ORD19",
+    "method": "GET",
+    "endpoint": "/store/order-invalid/5001",
+    "pathParams": {
+      "orderId": 5001
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ENDPOINT",
+    "description": "Call invalid GET order endpoint",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "ORD20",
+    "method": "DELETE",
+    "endpoint": "/store/order/5001",
+    "pathParams": {
+      "orderId": 5001
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Delete existing order",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "ORD21",
+    "method": "DELETE",
+    "endpoint": "/store/order/999999999",
+    "pathParams": {
+      "orderId": 999999999
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "NOT_FOUND",
+    "description": "Delete non-existing order",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD22",
+    "method": "DELETE",
+    "endpoint": "/store/order/abc",
+    "pathParams": {
+      "orderId": "abc"
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 400,
+    "error_type": "INVALID_TYPE",
+    "description": "Delete order using string ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD23",
+    "method": "DELETE",
+    "endpoint": "/store/order/-100",
+    "pathParams": {
+      "orderId": -100
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ID",
+    "description": "Delete order using negative ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "ORD24",
+    "method": "DELETE",
+    "endpoint": "/store/order/0",
+    "pathParams": {
+      "orderId": 0
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "BOUNDARY_VALUE",
+    "description": "Delete order using boundary ID value zero",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "ORD25",
+    "method": "DELETE",
+    "endpoint": "/store/order-invalid/5001",
+    "pathParams": {
+      "orderId": 5001
+    },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ENDPOINT",
+    "description": "Call invalid DELETE order endpoint",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "low"
+    }
+  }
+]

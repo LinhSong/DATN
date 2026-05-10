@@ -1,0 +1,6 @@
+{
+    "userId": 1,
+    "title": "New post title",
+    "body": "New post content",
+    "id": 101
+}

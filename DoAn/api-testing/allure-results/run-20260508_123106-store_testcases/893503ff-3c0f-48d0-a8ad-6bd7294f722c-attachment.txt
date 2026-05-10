@@ -1,0 +1,14 @@
+===== ASSERTION ERRORS =====
+STORE14 | Expected: 404 | Actual: 200
+
+===== INVALID DATA =====
+STORE13 | Expected: 400 | Actual: 404
+STORE15 | Expected: 400 | Actual: 404
+STORE16 | Expected: 400 | Actual: 415
+STORE18 | Expected: 400 | Actual: 404
+
+===== RUNTIME ERRORS =====
+STORE06 | No response from API
+STORE19 | No response from API
+
+===== INVALID ENDPOINT =====

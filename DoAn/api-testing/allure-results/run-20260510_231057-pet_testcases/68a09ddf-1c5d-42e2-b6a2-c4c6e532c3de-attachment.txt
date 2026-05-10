@@ -1,0 +1,1 @@
+{id=10101, name=Golden Retriever, status=available, category={id=1, name=Dogs}, photoUrls=[https://example.com/dog.jpg], tags=[{id=1, name=friendly}]}

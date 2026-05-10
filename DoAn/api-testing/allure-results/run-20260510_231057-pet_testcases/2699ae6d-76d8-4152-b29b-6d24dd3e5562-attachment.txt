@@ -1,0 +1,1 @@
+java.lang.IllegalArgumentException: Cannot serialize because cannot determine how to serialize content-type text/plain

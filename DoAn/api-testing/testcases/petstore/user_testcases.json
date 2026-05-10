@@ -1,0 +1,370 @@
+[
+  {
+    "id": "USER01",
+    "method": "POST",
+    "endpoint": "/user",
+    "pathParams": {},
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "id": 1,
+      "username": "user1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john@example.com",
+      "password": "123456",
+      "phone": "1234567890",
+      "userStatus": 1
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Create user with valid data",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "USER02",
+    "method": "GET",
+    "endpoint": "/user/user1",
+    "pathParams": { "username": "user1" },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get existing user",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "USER03",
+    "method": "PUT",
+    "endpoint": "/user/user1",
+    "pathParams": { "username": "user1" },
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "id": 1,
+      "username": "user1",
+      "firstName": "Updated",
+      "lastName": "User",
+      "email": "updated@example.com",
+      "password": "123456",
+      "phone": "9999999999",
+      "userStatus": 1
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Update existing user",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "USER04",
+    "method": "DELETE",
+    "endpoint": "/user/user1",
+    "pathParams": { "username": "user1" },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Delete existing user",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "USER05",
+    "method": "POST",
+    "endpoint": "/user",
+    "pathParams": {},
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "id": 2,
+      "username": "edge_user",
+      "firstName": "",
+      "lastName": "",
+      "email": "edge@example.com",
+      "password": "123",
+      "phone": "",
+      "userStatus": 0
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Create user with empty optional fields",
+    "labels": {
+      "validity": "valid",
+      "category": "edge_case",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "USER06",
+    "method": "GET",
+    "endpoint": "/user/edge_user",
+    "pathParams": { "username": "edge_user" },
+    "headers": { "Accept": "application/json" },
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get user with Accept header",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "USER07",
+    "method": "PUT",
+    "endpoint": "/user/edge_user",
+    "pathParams": { "username": "edge_user" },
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "id": 2,
+      "username": "edge_user",
+      "firstName": "A",
+      "lastName": "B",
+      "email": "a@b.com",
+      "password": "pass",
+      "phone": "111",
+      "userStatus": 1
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Update user with minimal valid data",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "USER08",
+    "method": "POST",
+    "endpoint": "/user",
+    "pathParams": {},
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "id": 3,
+      "username": "long_username_1234567890",
+      "firstName": "Test",
+      "lastName": "User",
+      "email": "long@example.com",
+      "password": "password",
+      "phone": "123456789012345",
+      "userStatus": 1
+    },
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Create user with long values",
+    "labels": {
+      "validity": "valid",
+      "category": "boundary",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "USER09",
+    "method": "GET",
+    "endpoint": "/user/long_username_1234567890",
+    "pathParams": { "username": "long_username_1234567890" },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get user with long username",
+    "labels": {
+      "validity": "valid",
+      "category": "boundary",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "USER10",
+    "method": "DELETE",
+    "endpoint": "/user/edge_user",
+    "pathParams": { "username": "edge_user" },
+    "headers": {},
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Delete another valid user",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "USER11",
+    "method": "GET",
+    "endpoint": "/user/unknown_user",
+    "pathParams": { "username": "unknown_user" },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "not_found",
+    "description": "Get non-existing user",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "USER12",
+    "method": "DELETE",
+    "endpoint": "/user/unknown_user",
+    "pathParams": { "username": "unknown_user" },
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "not_found",
+    "description": "Delete non-existing user",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "USER13",
+    "method": "GET",
+    "endpoint": "/user/",
+    "pathParams": {},
+    "headers": {},
+    "body": {},
+    "expected_status": 404,
+    "error_type": "missing_path_param",
+    "description": "Missing username in path",
+    "labels": {
+      "validity": "invalid",
+      "category": "missing_field",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "USER14",
+    "method": "POST",
+    "endpoint": "/user",
+    "pathParams": {},
+    "headers": {},
+    "body": {
+      "id": 4,
+      "username": "no_header_user"
+    },
+    "expected_status": 415,
+    "error_type": "missing_header",
+    "description": "POST without Content-Type header",
+    "labels": {
+      "validity": "invalid",
+      "category": "missing_header",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "USER15",
+    "method": "POST",
+    "endpoint": "/user",
+    "pathParams": {},
+    "headers": { "Content-Type": "text/plain" },
+    "body": "invalid",
+    "expected_status": 415,
+    "error_type": "unsupported_media_type",
+    "description": "Wrong content type",
+    "labels": {
+      "validity": "invalid",
+      "category": "invalid_input",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "USER16",
+    "method": "PUT",
+    "endpoint": "/user/user_invalid",
+    "pathParams": { "username": "user_invalid" },
+    "headers": { "Content-Type": "application/json" },
+    "body": {},
+    "expected_status": 400,
+    "error_type": "empty_body",
+    "description": "Update user with empty body",
+    "labels": {
+      "validity": "invalid",
+      "category": "missing_field",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "USER17",
+    "method": "PUT",
+    "endpoint": "/user/user_invalid",
+    "pathParams": { "username": "user_invalid" },
+    "headers": { "Content-Type": "application/json" },
+    "body": "invalid",
+    "expected_status": 400,
+    "error_type": "invalid_json",
+    "description": "Update user with invalid JSON body",
+    "labels": {
+      "validity": "invalid",
+      "category": "invalid_input",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "USER18",
+    "method": "DELETE",
+    "endpoint": "/user/@@@",
+    "pathParams": { "username": "@@@" },
+    "headers": {},
+    "body": {},
+    "expected_status": 400,
+    "error_type": "invalid_username_format",
+    "description": "Delete user with invalid characters",
+    "labels": {
+      "validity": "invalid",
+      "category": "invalid_input",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "USER19",
+    "method": "GET",
+    "endpoint": "/user/ ",
+    "pathParams": { "username": " " },
+    "headers": {},
+    "body": {},
+    "expected_status": 400,
+    "error_type": "invalid_username",
+    "description": "Username is blank space",
+    "labels": {
+      "validity": "invalid",
+      "category": "invalid_input",
+      "risk": "high"
+    }
+  },
+  {
+    "id": "USER20",
+    "method": "GET",
+    "endpoint": "/user/123!@#",
+    "pathParams": { "username": "123!@#" },
+    "headers": {},
+    "body": {},
+    "expected_status": 400,
+    "error_type": "invalid_username_format",
+    "description": "Username contains special characters",
+    "labels": {
+      "validity": "invalid",
+      "category": "invalid_input",
+      "risk": "high"
+    }
+  }
+]

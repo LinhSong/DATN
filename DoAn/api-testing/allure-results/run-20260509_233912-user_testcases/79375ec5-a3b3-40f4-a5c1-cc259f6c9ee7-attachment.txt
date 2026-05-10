@@ -1,0 +1,1 @@
+{id=1, username=user1, firstName=Updated, lastName=User, email=updated@example.com, password=123456, phone=9999999999, userStatus=1}

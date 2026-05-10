@@ -1,0 +1,21 @@
+[
+  {
+    "id": "PET01",
+    "method": "GET",
+    "endpoint": "/pet/1",
+    "pathParams": {
+      "petId": 1
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get existing pet by valid ID",
+    "labels": {
+      "validity": "valid",
+      "category": "positive",
+      "risk": "medium"
+    }
+  }]

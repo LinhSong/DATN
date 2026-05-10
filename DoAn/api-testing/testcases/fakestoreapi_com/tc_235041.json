@@ -1,0 +1,32 @@
+[
+  {
+    "id": "PROD01",
+    "method": "GET",
+    "endpoint": "/products",
+    "expected_status": 200
+  },
+  {
+    "id": "PROD02",
+    "method": "POST",
+    "endpoint": "/products",
+    "expected_status": 201
+  },
+  {
+    "id": "PROD03",
+    "method": "GET",
+    "endpoint": "/products/1",
+    "expected_status": 200
+  },
+  {
+    "id": "PROD04",
+    "method": "PUT",
+    "endpoint": "/products/1",
+    "expected_status": 200
+  },
+  {
+    "id": "PROD05",
+    "method": "DELETE",
+    "endpoint": "/products/1",
+    "expected_status": 200
+  }
+]

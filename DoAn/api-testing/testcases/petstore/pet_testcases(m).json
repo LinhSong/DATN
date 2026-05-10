@@ -1,0 +1,80 @@
+[{
+    "id": "PET03",
+    "method": "GET",
+    "endpoint": "/pet/-1",
+    "pathParams": {
+      "petId": -1
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "INVALID_ID",
+    "description": "Get pet using negative ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET04",
+    "method": "GET",
+    "endpoint": "/pet/abc",
+    "pathParams": {
+      "petId": "abc"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 400,
+    "error_type": "INVALID_TYPE",
+    "description": "Get pet using string instead of numeric ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "negative",
+      "risk": "medium"
+    }
+  },
+  {
+    "id": "PET05",
+    "method": "GET",
+    "endpoint": "/pet/0",
+    "pathParams": {
+      "petId": 0
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "NOT_FOUND",
+    "description": "Get pet using boundary ID value 0",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "low"
+    }
+  },
+  {
+    "id": "PET06",
+    "method": "GET",
+    "endpoint": "/pet/9223372036854775807",
+    "pathParams": {
+      "petId": 9223372036854775807
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "BOUNDARY_OVERFLOW",
+    "description": "Get pet using maximum 64-bit integer ID",
+    "labels": {
+      "validity": "invalid",
+      "category": "edge",
+      "risk": "high"
+    }
+}]

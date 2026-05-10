@@ -1,0 +1,60 @@
+[
+  {
+    "id": "TC001",
+    "method": "GET",
+    "endpoint": "/posts",
+    "pathParams": {},
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get all posts"
+  },
+  {
+    "id": "TC002",
+    "method": "GET",
+    "endpoint": "/posts/1",
+    "pathParams": {
+      "id": 1
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 200,
+    "error_type": null,
+    "description": "Get existing post by valid ID"
+  },
+  {
+    "id": "TC003",
+    "method": "GET",
+    "endpoint": "/posts/9999",
+    "pathParams": {
+      "id": 9999
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 404,
+    "error_type": "NOT_FOUND",
+    "description": "Get non-existing post by invalid ID"
+  },
+  {
+    "id": "TC004",
+    "method": "GET",
+    "endpoint": "/posts/abc",
+    "pathParams": {
+      "id": "abc"
+    },
+    "headers": {
+      "Accept": "application/json"
+    },
+    "body": {},
+    "expected_status": 400,
+    "error_type": "INVALID_TYPE",
+    "description": "Get post using string instead of numeric ID"
+  }
+]

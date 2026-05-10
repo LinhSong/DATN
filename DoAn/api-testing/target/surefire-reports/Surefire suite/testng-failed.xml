@@ -6,7 +6,7 @@
       <class name="test.ApiTest">
         <methods>
           <include name="summary"/>
-          <include name="runTest" invocation-numbers="0"/>
+          <include name="runTest" invocation-numbers="3"/>
         </methods>
       </class> <!-- test.ApiTest -->
     </classes>

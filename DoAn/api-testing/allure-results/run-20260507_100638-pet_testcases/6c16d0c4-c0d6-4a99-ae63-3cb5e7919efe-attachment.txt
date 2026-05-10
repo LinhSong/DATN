@@ -1,0 +1,20 @@
+===== ASSERTION ERRORS =====
+PET01 | Expected: 200 | Actual: 404
+PET02 | Expected: 404 | Actual: 200
+PET05 | Expected: 200 | Actual: 404
+PET06 | Expected: 404 | Actual: 200
+PET11 | Expected: 400 | Actual: 200
+PET12 | Expected: 400 | Actual: 500
+PET14 | Expected: 400 | Actual: 200
+
+===== INVALID DATA =====
+PET03 | Expected: 400 | Actual: 404
+PET04 | Expected: 400 | Actual: 404
+PET15 | Expected: 400 | Actual: 404
+
+===== RUNTIME ERRORS =====
+PET07 | No response from API
+PET08 | No response from API
+PET09 | No response from API
+
+===== INVALID ENDPOINT =====
