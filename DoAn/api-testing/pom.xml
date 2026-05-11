@@ -26,6 +26,20 @@
             <version>2.15.0</version>
         </dependency>
 
+        <!-- EXCEL READER -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.3</version>
+        </dependency>
+
+        <!-- Apache POI -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.5</version>
+        </dependency>
+
         <!-- TESTNG (optional nhưng nên giữ để mở rộng sau này) -->
         <dependency>
             <groupId>org.testng</groupId>

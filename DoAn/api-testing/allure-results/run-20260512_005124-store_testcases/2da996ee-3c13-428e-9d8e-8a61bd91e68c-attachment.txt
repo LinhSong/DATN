@@ -1,0 +1,4 @@
+<apiResponse>
+  <message>null for uri: http://petstore.swagger.io/v2/store/order-invalid/5001</message>
+  <type>unknown</type>
+</apiResponse>

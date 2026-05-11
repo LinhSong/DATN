@@ -1,0 +1,14 @@
+===== ASSERTION ERRORS =====
+ORD03 | Expected: 400 | Actual: 200
+ORD04 | Expected: 400 | Actual: 500
+ORD10 | Expected: 200 | Actual: 500
+ORD17 | Expected: 404 | Actual: 200
+
+===== INVALID DATA =====
+ORD15 | Expected: 400 | Actual: 404
+ORD22 | Expected: 400 | Actual: 404
+
+===== RUNTIME ERRORS =====
+
+
+===== INVALID ENDPOINT =====

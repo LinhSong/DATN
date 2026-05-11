@@ -1,0 +1,10 @@
+===== ASSERTION ERRORS =====
+PET04 | Expected: 400 | Actual: 404
+
+===== INVALID DATA =====
+
+
+===== RUNTIME ERRORS =====
+
+
+===== INVALID ENDPOINT =====

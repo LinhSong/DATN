@@ -1,0 +1,10 @@
+===== ASSERTION ERRORS =====
+
+
+===== INVALID DATA =====
+
+
+===== RUNTIME ERRORS =====
+
+
+===== INVALID ENDPOINT =====

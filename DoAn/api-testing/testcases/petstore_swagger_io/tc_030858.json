@@ -1,0 +1,34 @@
+[
+  {
+    "id": "PET13",
+    "method": "GET",
+    "endpoint": "/pet/-1",
+    "headers": "{\"Accept\":\"application/json\"}",
+    "body": "{\"petId\":-1}",
+    "expected_status": 200
+  },
+  {
+    "id": "PET04",
+    "method": "GET",
+    "endpoint": "/pet/abc",
+    "headers": "{\"Accept\":\"application/json\"}",
+    "body": "{\"petId\":\"abc\"}",
+    "expected_status": 400
+  },
+  {
+    "id": "PET05",
+    "method": "GET",
+    "endpoint": "/pet/0",
+    "headers": "{\"Accept\":\"application/json\"}",
+    "body": "{\"petId\":0}",
+    "expected_status": 404
+  },
+  {
+    "id": "PET06",
+    "method": "GET",
+    "endpoint": "/pet/9223372036854775807",
+    "headers": "{\"Accept\":\"application/json\"}",
+    "body": "{\"petId\":9223372036854775807}",
+    "expected_status": 404
+  }
+]

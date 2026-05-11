@@ -1,0 +1,15 @@
+===== ASSERTION ERRORS =====
+PET01 | Expected: 200 | Actual: 404
+PET06 | Expected: 404 | Actual: 200
+PET07 | Expected: 200 | Actual: 404
+PET12 | Expected: 400 | Actual: 500
+PET21 | Expected: 400 | Actual: 500
+
+===== INVALID DATA =====
+PET04 | Expected: 400 | Actual: 404
+PET27 | Expected: 400 | Actual: 404
+
+===== RUNTIME ERRORS =====
+
+
+===== INVALID ENDPOINT =====

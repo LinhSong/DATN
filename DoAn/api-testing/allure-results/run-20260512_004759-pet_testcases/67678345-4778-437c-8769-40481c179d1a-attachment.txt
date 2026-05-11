@@ -1,0 +1,1 @@
+{"id":10101,"category":{"id":1,"name":"Dogs"},"name":"Golden Retriever","photoUrls":["https://example.com/dog.jpg"],"tags":[{"id":1,"name":"friendly"}],"status":"available"}

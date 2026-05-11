@@ -1,0 +1,4 @@
+GET: 8
+POST: 11
+PUT: 0
+DELETE: 6

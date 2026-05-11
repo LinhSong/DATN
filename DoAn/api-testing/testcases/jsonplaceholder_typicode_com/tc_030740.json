@@ -1,0 +1,26 @@
+[
+  {
+    "id": "TC11",
+    "method": "GET ",
+    "endpoint": "/posts",
+    "headers": "{\"Accept\":\"application/json\"}",
+    "body": "{}",
+    "expected_status": 200
+  },
+  {
+    "id": "TC12",
+    "method": "GET ",
+    "endpoint": "/posts/9999",
+    "headers": "{\"Accept\":\"application/json\"}",
+    "body": "{}",
+    "expected_status": 404
+  },
+  {
+    "id": "TC13",
+    "method": "GET ",
+    "endpoint": "/posts/abc",
+    "headers": "{\"Accept\":\"application/json\"}",
+    "body": "{}",
+    "expected_status": 400
+  }
+]

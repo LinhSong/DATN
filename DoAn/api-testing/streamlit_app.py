@@ -29,6 +29,7 @@ default_states = {
     # TAB1
     "json_data_tab1": "",
     "file_name_tab1": "custom",
+    "active_tab": "tab1",
 
     # TAB2
     "json_data_tab2": "",
@@ -85,7 +86,17 @@ def validate_testcase_structure(data):
                 return False, f"Test case {index + 1} thiếu field: {field}"
 
     return True, "OK"
+def excel_to_json(excel_path):
 
+    df = pd.read_excel(excel_path)
+
+    data = df.fillna("").to_dict(orient="records")
+
+    return json.dumps(
+        data,
+        indent=2,
+        ensure_ascii=False
+    )
 # =========================================================
 # INPUT
 # =========================================================
@@ -139,14 +150,23 @@ with tab1:
     elif input_mode_new == "📁 Upload file":
 
         uploaded = st.file_uploader(
-            "Upload JSON",
-            type=["json"],
+            "Upload Excel",
+            type=["xlsx"],
             key="upload_new"
         )
 
         if uploaded:
-            json_data_new = uploaded.read().decode("utf-8")
-            file_name_new = uploaded.name.replace(".json", "")
+
+            temp_excel = tempfile.NamedTemporaryFile(
+                delete=False,
+                suffix=".xlsx"
+            )
+
+            temp_excel.write(uploaded.read())
+            temp_excel.close()
+
+            json_data_new = temp_excel.name
+            file_name_new = uploaded.name.replace(".xlsx", "")
 
     # =====================================================
     # SAVE OPTION
@@ -157,20 +177,43 @@ with tab1:
     )
 
     # =====================================================
-    # PREVIEW (IMPORTANT FIX)
+    # PREVIEW tab1
     # =====================================================
     if st.session_state.json_data_tab1:
 
         st.subheader("📄 Preview")
 
-        try:
-            parsed = json.loads(st.session_state.json_data_tab1)
+        # ===== EXCEL =====
+        if st.session_state.json_data_tab1.endswith(".xlsx"):
 
-            with st.container(height=350, border=True):
-                st.json(parsed)
+            try:
 
-        except Exception as e:
-            st.error(f"JSON lỗi: {e}")
+                df_preview = pd.read_excel(
+                    st.session_state.json_data_tab1
+                )
+
+                with st.container(height=350, border=True):
+                    st.dataframe(df_preview)
+
+            except Exception as e:
+
+                st.error(f"Lỗi đọc Excel: {e}")
+
+        # ===== JSON =====
+        else:
+
+            try:
+
+                parsed = json.loads(
+                    st.session_state.json_data_tab1
+                )
+
+                with st.container(height=350, border=True):
+                    st.json(parsed)
+
+            except Exception as e:
+
+                st.error(f"JSON lỗi: {e}")
 
 # =========================================================
 # UPDATE SESSION STATE (FIXED SAFE WAY)
@@ -262,14 +305,23 @@ with tab2:
     elif input_mode_old == "📁 Upload file":
 
         uploaded_old = st.file_uploader(
-            "Upload JSON",
-            type=["json"],
+            "Upload Excel",
+            type=["xlsx"],
             key="upload_old"
         )
 
         if uploaded_old:
-            json_data_old = uploaded_old.read().decode("utf-8")
-            file_name_old = uploaded_old.name.replace(".json", "")
+
+            temp_excel = tempfile.NamedTemporaryFile(
+                delete=False,
+                suffix=".xlsx"
+            )
+
+            temp_excel.write(uploaded_old.read())
+            temp_excel.close()
+
+            json_data_old = temp_excel.name
+            file_name_old = uploaded_old.name.replace(".xlsx", "")
 
     # ================= EXISTING FILE =================
 
@@ -309,20 +361,45 @@ with tab2:
         st.session_state.json_data_tab2 = json_data_old
         st.session_state.file_name_tab2 = file_name_old
 
-    # ================= PREVIEW =================
+    # ================= PREVIEW tab2 =================
+            
+# ================= PREVIEW =================
 
     if st.session_state.json_data_tab2:
 
         st.subheader("📄 Preview")
 
-        try:
-            parsed = json.loads(st.session_state.json_data_tab2)
+        # ===== EXCEL =====
+        if st.session_state.json_data_tab2.endswith(".xlsx"):
 
-            with st.container(height=350, border=True):
-                st.json(parsed)
+            try:
 
-        except Exception as e:
-            st.error(f"JSON lỗi: {e}")
+                df_preview = pd.read_excel(
+                    st.session_state.json_data_tab2
+                )
+
+                with st.container(height=350, border=True):
+                    st.dataframe(df_preview)
+
+            except Exception as e:
+
+                st.error(f"Lỗi đọc Excel: {e}")
+
+        # ===== JSON =====
+        else:
+
+            try:
+
+                parsed = json.loads(
+                    st.session_state.json_data_tab2
+                )
+
+                with st.container(height=350, border=True):
+                    st.json(parsed)
+
+            except Exception as e:
+
+                st.error(f"JSON lỗi: {e}")
 # =========================================================
 # RUN TEST
 # =========================================================
@@ -361,27 +438,26 @@ if st.button("▶️ Run Test"):
         st.error("❌ Vui lòng nhập Base URL")
         st.stop()
 
-    # =====================================================
-    # VALIDATE JSON
-    # =====================================================
+    # JSON mode
+    if not current_data.endswith(".xlsx"):
 
-    try:
+        try:
 
-        parsed_json = json.loads(current_data)
+            parsed_json = json.loads(current_data)
 
-    except Exception as e:
+        except Exception as e:
 
-        st.error(f"JSON lỗi: {e}")
-        st.stop()
+            st.error(f"JSON lỗi: {e}")
+            st.stop()
 
-    valid, message = validate_testcase_structure(
-        parsed_json
-    )
+        valid, message = validate_testcase_structure(
+            parsed_json
+        )
 
-    if not valid:
+        if not valid:
 
-        st.error(message)
-        st.stop()
+            st.error(message)
+            st.stop()
 
     # =====================================================
     # RUN TEST
@@ -401,16 +477,21 @@ if st.button("▶️ Run Test"):
         # TEMP FILE
         # =================================================
 
-        tmp = tempfile.NamedTemporaryFile(
-            delete=False,
-            suffix=".json"
-        )
+        if isinstance(current_data, str) and current_data.endswith(".xlsx"):
 
-        tmp.write(
-            current_data.encode("utf-8")
-        )
+            file_path = current_data
 
-        tmp.close()
+        else:
+
+            tmp = tempfile.NamedTemporaryFile(
+                delete=False,
+                suffix=".json"
+            )
+
+            tmp.write(current_data.encode("utf-8"))
+            tmp.close()
+
+            file_path = tmp.name
 
         # =================================================
         # RUN DIR
@@ -449,7 +530,7 @@ if st.button("▶️ Run Test"):
 
             f'-Dsurefire.printSummary=false '
 
-            f'-Dfile="{tmp.name}" '
+            f'-Dfile="{file_path}" '
 
             f'-DbaseUrl="{current_base_url}" '
 
@@ -512,8 +593,8 @@ if st.button("▶️ Run Test"):
         # =================================================
 
         if (
-            st.session_state.active_tab == "tab1"
-            and save_tc_tab1
+            run_source == "🆕 Tab URL mới"
+            and st.session_state.save_tc_tab1
         ):
 
             group_name = extract_group_from_url(
@@ -534,20 +615,29 @@ if st.button("▶️ Run Test"):
                 f"tc_{datetime.now().strftime('%H%M%S')}.json"
             )
 
+            save_content = current_data
+
+            # Nếu là excel -> convert sang json
+            if current_data.endswith(".xlsx"):
+
+                save_content = excel_to_json(current_data)
+
             with open(
                 os.path.join(tc_dir, auto_name),
                 "w",
                 encoding="utf-8"
             ) as f:
 
-                f.write(current_data)
+                f.write(save_content)
+
+            st.success(f"✅ Đã lưu testcase: {auto_name}")
 
         # =================================================
         # SAVE TESTCASE TAB2
         # =================================================
 
         if (
-            st.session_state.active_tab == "tab2"
+            run_source == "📂 Tab URL đã chạy"
             and st.session_state.save_tc_tab2
             and selected_group
         ):
@@ -566,13 +656,22 @@ if st.button("▶️ Run Test"):
                 f"tc_{datetime.now().strftime('%H%M%S')}.json"
             )
 
+            save_content = current_data
+
+            # Nếu là excel -> convert json
+            if current_data.endswith(".xlsx"):
+
+                save_content = excel_to_json(current_data)
+
             with open(
                 os.path.join(tc_dir, auto_name),
                 "w",
                 encoding="utf-8"
             ) as f:
 
-                f.write(current_data)
+                f.write(save_content)
+
+            st.success(f"✅ Đã lưu testcase: {auto_name}")
 
 # =========================================================
 # RESULT

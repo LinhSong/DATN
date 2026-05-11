@@ -1,0 +1,14 @@
+===== ASSERTION ERRORS =====
+
+
+===== INVALID DATA =====
+USER13 | Expected: 404 | Actual: 405
+USER18 | Expected: 400 | Actual: 404
+USER19 | Expected: 400 | Actual: 405
+USER20 | Expected: 400 | Actual: 404
+
+===== RUNTIME ERRORS =====
+
+
+===== INVALID ENDPOINT =====
+USER16 | Endpoint: /user/user_invalid

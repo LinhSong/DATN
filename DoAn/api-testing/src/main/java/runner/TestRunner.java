@@ -4,7 +4,7 @@ import executor.ApiExecutor;
 import io.qameta.allure.Allure;
 //import io.qameta.allure.model.TestResult;
 import model.TestCase;
-import utils.JsonReader;
+import utils.ExcelReader;
 import utils.ResultWriter;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class TestRunner {
         Allure.getLifecycle().startTestCase(testUUID);
 
         try {
-            List<TestCase> testCases = JsonReader.readTestCases(file);
+            List<TestCase> testCases = ExcelReader.readTestCases(file);
 
             List<model.TestResult> results = new ArrayList<>();
 

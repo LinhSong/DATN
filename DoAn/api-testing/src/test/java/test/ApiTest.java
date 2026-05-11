@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import utils.ExcelReader;
 import utils.JsonReader;
 
 import java.util.ArrayList;
@@ -51,25 +52,57 @@ public class ApiTest {
 
     private static final List<TestResult> results = new ArrayList<>();
 
-    @DataProvider(name = "api-data")
-    public Object[][] getData() throws Exception {
+        @DataProvider(name = "api-data")
+        public Object[][] getData() throws Exception {
 
         String file = System.getProperty("file");
 
         if (file == null) {
-            throw new RuntimeException("Missing -Dfile parameter");
+
+                throw new RuntimeException(
+                        "Missing -Dfile parameter"
+                );
         }
 
-        List<TestCase> testCases = JsonReader.readTestCases(file);
+        List<TestCase> testCases;
+
+        // ===============================
+        // READ EXCEL
+        // ===============================
+        if (file.endsWith(".xlsx")) {
+
+                testCases = ExcelReader.readTestCases(file);
+
+        }
+
+        // ===============================
+        // READ JSON
+        // ===============================
+        else if (file.endsWith(".json")) {
+
+                testCases = JsonReader.readTestCases(file);
+
+        }
+
+        // ===============================
+        // INVALID FORMAT
+        // ===============================
+        else {
+
+                throw new RuntimeException(
+                        "Unsupported file format: " + file
+                );
+        }
 
         Object[][] data = new Object[testCases.size()][1];
 
         for (int i = 0; i < testCases.size(); i++) {
-            data[i][0] = testCases.get(i);
+
+                data[i][0] = testCases.get(i);
         }
 
         return data;
-    }
+        }
 
     @Test(dataProvider = "api-data")
     @Severity(SeverityLevel.CRITICAL)

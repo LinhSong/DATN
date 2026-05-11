@@ -1,60 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="3" failed="1" skipped="0">
+<testng-results ignored="0" total="4" passed="1" failed="3" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-05-11T01:33:11 ICT" name="Surefire suite" finished-at="2026-05-11T01:33:15 ICT" duration-ms="4144">
+  <suite started-at="2026-05-12T03:08:46 ICT" name="Surefire suite" finished-at="2026-05-12T03:08:57 ICT" duration-ms="11020">
     <groups>
     </groups>
-    <test started-at="2026-05-11T01:33:11 ICT" name="Surefire test" finished-at="2026-05-11T01:33:15 ICT" duration-ms="4144">
+    <test started-at="2026-05-12T03:08:46 ICT" name="Surefire test" finished-at="2026-05-12T03:08:57 ICT" duration-ms="11020">
       <class name="test.ApiTest">
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-11T01:33:11 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-11T01:33:14 ICT" duration-ms="2792" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@662b4c69]" started-at="2026-05-12T03:08:47 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-12T03:08:52 ICT" duration-ms="5162" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[model.TestCase@1e8ce150]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-11T01:33:14 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-11T01:33:14 ICT" duration-ms="318" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[model.TestCase@3453acd2]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-11T01:33:14 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-11T01:33:14 ICT" duration-ms="200" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[model.TestCase@20d33ea]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runTest -->
-        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-11T01:33:14 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-11T01:33:15 ICT" duration-ms="235" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[model.TestCase@43ac0a68]]>
+                <![CDATA[model.TestCase@59712875]]>
               </value>
             </param>
           </params>
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[TC004 | Expected: 400 | Actual: 404 | ErrorType: assertion_error]]>
+              <![CDATA[PET13 | Expected: 200 | Actual: 404 | ErrorType: assertion_error]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: TC004 | Expected: 400 | Actual: 404 | ErrorType: assertion_error
-at test.ApiTest.runTest(ApiTest.java:249)
+              <![CDATA[java.lang.AssertionError: PET13 | Expected: 200 | Actual: 404 | ErrorType: assertion_error
+at test.ApiTest.runTest(ApiTest.java:282)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -92,7 +59,122 @@ at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method is-config="true" signature="summary()[pri:0, instance:test.ApiTest@6f46426d]" started-at="2026-05-11T01:33:15 ICT" name="summary" finished-at="2026-05-11T01:33:15 ICT" duration-ms="121" status="PASS">
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@662b4c69]" started-at="2026-05-12T03:08:52 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-12T03:08:54 ICT" duration-ms="1494" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[model.TestCase@1ea930eb]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[PET04 | Expected: 400 | Actual: 404 | ErrorType: assertion_error]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: PET04 | Expected: 400 | Actual: 404 | ErrorType: assertion_error
+at test.ApiTest.runTest(ApiTest.java:282)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest -->
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@662b4c69]" started-at="2026-05-12T03:08:54 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-12T03:08:55 ICT" duration-ms="1399" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[model.TestCase@3b57dba4]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest -->
+        <test-method signature="runTest(model.TestCase)[pri:0, instance:test.ApiTest@662b4c69]" started-at="2026-05-12T03:08:55 ICT" name="runTest" data-provider="api-data" finished-at="2026-05-12T03:08:57 ICT" duration-ms="1388" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[model.TestCase@407b8435]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[PET06 | Expected: 404 | Actual: 200 | ErrorType: assertion_error]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: PET06 | Expected: 404 | Actual: 200 | ErrorType: assertion_error
+at test.ApiTest.runTest(ApiTest.java:282)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest -->
+        <test-method is-config="true" signature="summary()[pri:0, instance:test.ApiTest@662b4c69]" started-at="2026-05-12T03:08:57 ICT" name="summary" finished-at="2026-05-12T03:08:57 ICT" duration-ms="157" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- summary -->

@@ -1,8 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: test.ApiTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 5.338 s <<< FAILURE! - in test.ApiTest
-test.ApiTest.runTest[model.TestCase@43ac0a68](4)  Time elapsed: 0.236 s  <<< FAILURE!
-java.lang.AssertionError: TC004 | Expected: 400 | Actual: 404 | ErrorType: assertion_error
-	at test.ApiTest.runTest(ApiTest.java:249)
+Tests run: 4, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 12.11 s <<< FAILURE! - in test.ApiTest
+test.ApiTest.runTest[model.TestCase@59712875](1)  Time elapsed: 5.116 s  <<< FAILURE!
+java.lang.AssertionError: PET13 | Expected: 200 | Actual: 404 | ErrorType: assertion_error
+	at test.ApiTest.runTest(ApiTest.java:282)
+
+test.ApiTest.runTest[model.TestCase@1ea930eb](2)  Time elapsed: 1.491 s  <<< FAILURE!
+java.lang.AssertionError: PET04 | Expected: 400 | Actual: 404 | ErrorType: assertion_error
+	at test.ApiTest.runTest(ApiTest.java:282)
+
+test.ApiTest.runTest[model.TestCase@407b8435](4)  Time elapsed: 1.389 s  <<< FAILURE!
+java.lang.AssertionError: PET06 | Expected: 404 | Actual: 200 | ErrorType: assertion_error
+	at test.ApiTest.runTest(ApiTest.java:282)
 

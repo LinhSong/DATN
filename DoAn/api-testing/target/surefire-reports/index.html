@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">4 methods, 1 failed,   3 passed</span>
+                    <span class="method-stats">4 methods, 3 failed,   1 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -103,7 +103,17 @@
                     <div class="method-list-content failed suite-Surefire_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@43ac0a68)">runTest(model.TestCase@43ac0a68)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@59712875)">runTest(model.TestCase@59712875)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@1ea930eb)">runTest(model.TestCase@1ea930eb)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@407b8435)">runTest(model.TestCase@407b8435)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Surefire_suite -->
@@ -117,17 +127,7 @@
                     <div class="method-list-content passed suite-Surefire_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@3453acd2)">runTest(model.TestCase@3453acd2)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@20d33ea)">runTest(model.TestCase@20d33ea)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@1e8ce150)">runTest(model.TestCase@1e8ce150)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="test.ApiTest" class="method navigator-link" hash-for-method="runTest(model.TestCase@3b57dba4)">runTest(model.TestCase@3b57dba4)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Surefire_suite -->
@@ -150,12 +150,38 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@43ac0a68)">
-                  </a> <!-- runTest(model.TestCase@43ac0a68) -->
+                  <a name="runTest(model.TestCase@59712875)">
+                  </a> <!-- runTest(model.TestCase@59712875) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@43ac0a68)</span>
-                  <div class="stack-trace">java.lang.AssertionError: TC004 | Expected: 400 | Actual: 404 | ErrorType: assertion_error
-	at test.ApiTest.runTest(ApiTest.java:249)
+                  <span class="parameters">(model.TestCase@59712875)</span>
+                  <div class="stack-trace">java.lang.AssertionError: PET13 | Expected: 200 | Actual: 404 | ErrorType: assertion_error
+	at test.ApiTest.runTest(ApiTest.java:282)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runTest(model.TestCase@1ea930eb)">
+                  </a> <!-- runTest(model.TestCase@1ea930eb) -->
+                  <span class="method-name">runTest</span>
+                  <span class="parameters">(model.TestCase@1ea930eb)</span>
+                  <div class="stack-trace">java.lang.AssertionError: PET04 | Expected: 400 | Actual: 404 | ErrorType: assertion_error
+	at test.ApiTest.runTest(ApiTest.java:282)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 30 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runTest(model.TestCase@407b8435)">
+                  </a> <!-- runTest(model.TestCase@407b8435) -->
+                  <span class="method-name">runTest</span>
+                  <span class="parameters">(model.TestCase@407b8435)</span>
+                  <div class="stack-trace">java.lang.AssertionError: PET06 | Expected: 404 | Actual: 200 | ErrorType: assertion_error
+	at test.ApiTest.runTest(ApiTest.java:282)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
 ... Removed 30 stack frames
 </div> <!-- stack-trace -->
@@ -171,26 +197,10 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runTest(model.TestCase@3453acd2)">
-                  </a> <!-- runTest(model.TestCase@3453acd2) -->
+                  <a name="runTest(model.TestCase@3b57dba4)">
+                  </a> <!-- runTest(model.TestCase@3b57dba4) -->
                   <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@3453acd2)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="runTest(model.TestCase@20d33ea)">
-                  </a> <!-- runTest(model.TestCase@20d33ea) -->
-                  <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@20d33ea)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="runTest(model.TestCase@1e8ce150)">
-                  </a> <!-- runTest(model.TestCase@1e8ce150) -->
-                  <span class="method-name">runTest</span>
-                  <span class="parameters">(model.TestCase@1e8ce150)</span>
+                  <span class="parameters">(model.TestCase@3b57dba4)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -250,24 +260,24 @@ data.addRows(4);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runTest')
 data.setCell(0, 2, 'test.ApiTest')
-data.setCell(0, 3, 2792);
+data.setCell(0, 3, 5162);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'runTest')
 data.setCell(1, 2, 'test.ApiTest')
-data.setCell(1, 3, 318);
+data.setCell(1, 3, 1494);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'runTest')
 data.setCell(2, 2, 'test.ApiTest')
-data.setCell(2, 3, 235);
+data.setCell(2, 3, 1399);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'runTest')
 data.setCell(3, 2, 'test.ApiTest')
-data.setCell(3, 3, 200);
+data.setCell(3, 3, 1388);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 seconds</span>
+              <span class="suite-total-time">Total running time: 9 seconds</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -295,26 +305,30 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">test.ApiTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@1e8ce150)</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runTest(model.TestCase@59712875)</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@3453acd2)</span>
-                <span class="method-start">2978 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">runTest(model.TestCase@20d33ea)</span>
-                <span class="method-start">3303 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">runTest(model.TestCase@43ac0a68)</span>
-                <span class="method-start">3510 ms</span>
+                <span class="method-name">runTest(model.TestCase@1ea930eb)</span>
+                <span class="method-start">5365 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">runTest(model.TestCase@3b57dba4)</span>
+                <span class="method-start">6870 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runTest(model.TestCase@407b8435)</span>
+                <span class="method-start">8277 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">summary</span>
-                <span class="method-start">3762 ms</span>
+                <span class="method-start">9674 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
